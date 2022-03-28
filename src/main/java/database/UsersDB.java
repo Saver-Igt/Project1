@@ -9,7 +9,7 @@ import java.sql.Statement;
  * @author Siraev
  * @version 1.1
  */
-public class UsersDataBase extends DataBase{
+public class UsersDB extends DataBase{
 	
 	/**
 	 * Метод, добавляющий нового пользователя.
