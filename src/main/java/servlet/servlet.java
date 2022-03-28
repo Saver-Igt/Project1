@@ -1,4 +1,4 @@
-package simple;
+package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

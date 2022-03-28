@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>TEst</name>
+	<name>Project1</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -38,7 +38,7 @@
 		<link>
 			<name>src/main/webapp/jsp/images/ugatu_logo.png</name>
 			<type>1</type>
-			<location>/Users/renatkhasanov/kurs/images/ugatu_logo.png</location>
+			<location>C:/Users/renatkhasanov/kurs/images/ugatu_logo.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>

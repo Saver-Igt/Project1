@@ -1,7 +1,5 @@
-package DB;
+package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,54 +7,9 @@ import java.sql.Statement;
 /**
  * Класс для управления базой данных пользователей.
  * @author Siraev
- * @version 1.0
+ * @version 1.1
  */
-public class UsersDataBase {
-	
-	/**
-	 * Метод для тестирования новых функций.
-	 *
-	 * @param args the arguments
-	 * @throws SQLException the SQL exception
-	 */
-	public static void main(String[] args) throws SQLException {
-		
-		String serverName = "DESKTOP-UGB9IJG";
-		String dataBaseName = "Users";
-		String user = "sa";
-		String password = "123";
-		
-		UsersDataBase app = new UsersDataBase();
-		Connection conn = app.connectToSQL(serverName,dataBaseName,user,password);
-		
-		Statement st = conn.createStatement();
-		st.close();
-	}
-	
-	/**
-	 * Метод, осуществляющий подключение к БД.
-	 *
-	 * @param serverName имя сервера
-	 * @param dataBaseName название БД
-	 * @param user пользователь
-	 * @param password пароль
-	 * @return объект класса Connection
-	 */
-	public Connection connectToSQL(String serverName,String dataBaseName, String user, String password) {
-		String connectionURL =
-			"jdbc:sqlserver://" + serverName  +";Database=" + dataBaseName 
-			 +";user="+ user + ";password=" + password +";"
-			 +"trustServerCertificate = true; encrypt = false; IntegratedSecurity = false";
-		try {
-			Connection con = DriverManager.getConnection(connectionURL);
-			System.out.println("Connected to SQL");
-			return con;		
-		}catch(SQLException e) {
-			System.out.println("Error");
-			e.printStackTrace();
-		}
-		return null;
-	}
+public class UsersDataBase extends DataBase{
 	
 	/**
 	 * Метод, добавляющий нового пользователя.
@@ -98,7 +51,7 @@ public class UsersDataBase {
 	}
 	
 	/**
-	 * Метод удаляет пользователя по ID
+	 * Метод удаляет пользователя по ID.
 	 *
 	 * @param statement объект, выполняющий команды SQL
 	 * @param id ID пользователя
@@ -114,7 +67,7 @@ public class UsersDataBase {
 	}
 	
 	/**
-	 * Метод, проверяющий уникальность логина
+	 * Метод, проверяющий уникальность логина.
 	 *
 	 * @param statement объект, выполняющий команды SQL
 	 * @param login логин для проверки
