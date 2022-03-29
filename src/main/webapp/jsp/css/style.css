@@ -100,10 +100,40 @@ input:focus ~ i {
     color: #843bc7;
 }
 
+.pas-for {
+    margin: -10px 0 10px 10px;
+    color: #a6a6a6;
+}
+
+.pas-for-link {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.3;
+}
+
+.pas-for-link:hover {
+    opacity: 0.8;
+}
+
+.pas-forRegister {
+    margin: -10px 0 10px 10px;
+    color: #a6a6a6;
+}
+
+.pas-for-linkRegister {
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.3;
+}
+.pas-for-linkRegister:hover {
+    opacity: 0.8;
+}
+
+
 button.submit {
     color: #fff;
     padding: 14px 64px;
-    margin: 32px auto;
+    margin: 12px auto;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
@@ -113,6 +143,22 @@ button.submit {
 }
 
 button.submit:hover {
+    opacity: 0.8;
+}
+
+button.submitRegister {
+    color: #fff;
+    padding: 14px 64px;
+    margin: 12px auto;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #8b33c5, #15a0e1);
+    cursor: pointer;
+    transition: opacity 0.4s;
+}
+
+button.submitRegister:hover {
     opacity: 0.8;
 }
 
