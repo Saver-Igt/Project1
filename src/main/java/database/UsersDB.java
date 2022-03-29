@@ -1,8 +1,10 @@
 package database;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Класс для управления базой данных пользователей.
@@ -10,6 +12,19 @@ import java.sql.Statement;
  * @version 1.1
  */
 public class UsersDB extends DataBase{
+public static void main(String[] args) throws SQLException {
+		
+		String serverName = "DESKTOP-UGB9IJG";
+		String dataBaseName = "Users";
+		String user = "sa";
+		String password = "123";
+		
+		UsersDB app = new UsersDB();
+		Connection conn = app.connectToSQL(serverName,dataBaseName,user,password);
+		Statement st = conn.createStatement();
+		
+		st.close();
+	}
 	
 	/**
 	 * Метод, добавляющий нового пользователя.

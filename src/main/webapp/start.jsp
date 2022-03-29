@@ -22,14 +22,14 @@
             <div class="sep"></div>
             <p class="hello-message">Пожалуйста, авторизируйтесь для получения доступа</p>
 
-            <form class="login-form">
+            <form class="login-form" metod="get" action="welcome">
                 <div class="form-control">
-                    <input type="text" placeholder="Login">
+                    <input type="text" placeholder="Login" name="login">
                     <i class="fas fa-user"></i>
                 </div>
 
                 <div class="form-control">
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password">
                     <i class="fas fa-lock"></i>
                 </div>
                 
