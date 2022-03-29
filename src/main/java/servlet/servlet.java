@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import database.UsersDB;
 
 @WebServlet("/welcome")
 public class servlet extends HttpServlet {
@@ -21,13 +24,28 @@ public class servlet extends HttpServlet {
     	
     	String login = request.getParameter("login");
     	String password = request.getParameter("password");
+	    
+    	// База Данных
+    	UsersDB db = new UsersDB();
+    	try {
+			db.connectToSQL();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+    	db.createStatement();
     	
-    	String serverName = "DESKTOP-UGB9IJG";
-		String dataBaseName = "Users";
-		String user = "sa";
-		String pass = "123";
+    	if(db.checkForUser(db.getStatement(), login, password)) {
+    		request.getRequestDispatcher("/Main.jsp").forward(request, response);
+    	}else {
+			PrintWriter printWriter = response.getWriter();
+			printWriter.print("Sorry UserName or Password Error!");  
+	        RequestDispatcher rd = request.getRequestDispatcher("/start.jsp");  
+	        rd.include(request, response);  
+		} 
 		
-		if (login.equals("123") && password.equals("123")) {
+    // Проверка без БД логин 123 и пароль 123
+    // 
+	/*	if (login.equals("123") && password.equals("123")) {
 			request.getRequestDispatcher("/Main.jsp").forward(request, response);
 		}else {
 			PrintWriter printWriter = response.getWriter();
@@ -35,14 +53,13 @@ public class servlet extends HttpServlet {
 	        RequestDispatcher rd = request.getRequestDispatcher("/start.jsp");  
 	        rd.include(request, response);  
 		} 
-	
+	*/
     	
 	}
 	 @Override
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    	request.setCharacterEncoding("UTF-8");
-	    	response.setContentType("text/html;charset=utf-8");	
-	    	 
+	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
 	 }
+	 
 
 }

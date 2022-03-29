@@ -1,8 +1,12 @@
 package database;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * Класс баз данных.
@@ -11,7 +15,8 @@ import java.sql.SQLException;
  * @version 1.0
  */
 public class DataBase {
-
+	protected Connection connection;
+	protected Statement statement;
 	/**
 	 * Метод, осуществляющий подключение к БД.
 	 *
@@ -20,20 +25,25 @@ public class DataBase {
 	 * @param user пользователь
 	 * @param password пароль
 	 * @return объект класса Connection
+	 * @throws NamingException 
 	 */
-	public Connection connectToSQL(String serverName,String dataBaseName, String user, String password) {
-		String connectionURL =
-			"jdbc:sqlserver://" + serverName  +";Database=" + dataBaseName 
-			 +";user="+ user + ";password=" + password +";"
-			 +"trustServerCertificate = true; encrypt = false; IntegratedSecurity = false";
+	public void connectToSQL() throws NamingException {
+		InitialContext cxt = new InitialContext();
+		DataSource dataSource = (DataSource) cxt.lookup("java:comp/env/jdbc/mssql-otzprod1");
 		try {
-			Connection con = (Connection) DriverManager.getConnection(connectionURL);
-			System.out.println("Connected to SQL");
-			return con;		
-		}catch(SQLException e) {
-			System.out.println("Error");
+			connection = dataSource.getConnection();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+	}
+	public void createStatement() {
+		try {
+			statement = connection.createStatement();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public Statement getStatement() {
+		return statement;
 	}
 }

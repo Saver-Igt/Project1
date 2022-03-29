@@ -1,10 +1,8 @@
 package database;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  * Класс для управления базой данных пользователей.
@@ -12,19 +10,7 @@ import java.util.ArrayList;
  * @version 1.1
  */
 public class UsersDB extends DataBase{
-public static void main(String[] args) throws SQLException {
-		
-		String serverName = "DESKTOP-UGB9IJG";
-		String dataBaseName = "Users";
-		String user = "sa";
-		String password = "123";
-		
-		UsersDB app = new UsersDB();
-		Connection conn = app.connectToSQL(serverName,dataBaseName,user,password);
-		Statement st = conn.createStatement();
-		
-		st.close();
-	}
+
 	
 	/**
 	 * Метод, добавляющий нового пользователя.
@@ -34,7 +20,7 @@ public static void main(String[] args) throws SQLException {
 	 * @param password пароль
 	 */
 	public void insertInBase(Statement statement,String login,String password) {
-		String insert = "INSERT INTO Users (login,password,ClassUSer) VALUES ('"+
+		String insert = "INSERT INTO Users.dbo.Users (login,password,Role) VALUES ('"+
 				login + "', '" + password + "', 'SimpleUser')";
 		try {
 			statement.executeUpdate(insert);
@@ -54,9 +40,9 @@ public static void main(String[] args) throws SQLException {
 	 * @param id ID, по которому происходит изменение
 	 */
 	public void updateData(Statement statement,String login,String password, String userClass,int id) {
-		String sqlCommand = "UPDATE Users SET login = '" + login +"',"
+		String sqlCommand = "UPDATE Users.dbo.Users SET login = '" + login +"',"
 				+ "password ='"+ password+"',"
-				+ "Classuser = '" + userClass+ "' WHERE ID = " + Integer.toString(id);
+				+ "Role = '" + userClass+ "' WHERE ID = " + Integer.toString(id);
 		try {
 			statement.executeUpdate(sqlCommand);
 			System.out.println("Data updated");
@@ -72,7 +58,7 @@ public static void main(String[] args) throws SQLException {
 	 * @param id ID пользователя
 	 */
 	public void deleteUser(Statement statement,int id) {
-		String sqlCommand = "DELETE FROM Users WHERE ID = " + Integer.toString(id);
+		String sqlCommand = "DELETE FROM Users.dbo.Users WHERE ID = " + Integer.toString(id);
 		try {
 			statement.executeUpdate(sqlCommand);
 			System.out.println("User with id = " + id + " deleted.");
@@ -90,7 +76,7 @@ public static void main(String[] args) throws SQLException {
 	 */
 	public boolean checkForUniqueLogin(Statement statement,String login) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2))) {
                 	return true;
@@ -111,7 +97,7 @@ public static void main(String[] args) throws SQLException {
 	 */
 	public int getID(Statement statement,String login) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2))) {
                 	return resultSet.getInt(1);
@@ -133,7 +119,7 @@ public static void main(String[] args) throws SQLException {
 	 */
 	public boolean checkForUser(Statement statement,String login,String password) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2)) && password.equals(resultSet.getString(3))) {
                 	return true;

@@ -23,20 +23,20 @@
             <div class="sep"></div>
             <p class="hello-message">Введите необходимые данные</p>
 
-            <form class="login-form">
+            <form class="login-form" metod="get" action="registretion">
                 <div class="form-control">
                     <input type="text" placeholder="Ф.И.О.">
                     <i class="fa-solid fa-file-signature"></i>
                 </div>
 
                 <div class="form-control">
-                    <input type="textName" placeholder="Login">
+                    <input type="textName" placeholder="Login" name="login">
                     <i class="fas fa-user"></i>
                 </div>
                 
 
                 <div class="form-control">
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password">
                     <i class="fas fa-lock"></i>
                 </div>
                 
