@@ -123,75 +123,223 @@ body {
 }
 
 
-.container input[type="text"]{
-    border-radius: 6px;
+
+.output-form{
+    width: 100%;
+    margin-top: -450px;
+    margin-left: 470px;
+    display: flex;
+    flex-direction: column;
+}
+
+.output-control {
+    width: 350px;
+    position: relative;
+    margin-bottom: 10px;
+    outline: 1px solid #000; 
+    border-radius: 10px;
+    background: transparent;
+    letter-spacing: 0.5px;
+    padding: 9px 15px;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    width: 100%;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+input {
+    margin-left: 20px;
+    width: 400px;
+    height: 30px;
+    background-color: #e6e6e6;
+    color: #333;
+    letter-spacing: 0.5px;
+    padding: 14px 64px;
+}
+
+.detailsCount {
+    width: 350px;
+}
+
+.detailPrice {
+    width: 350px;
+}
+
+.penny {
+    width: 350px;
+}
+
+.date {
+    margin-top: 0px;
+    width: 300px;
+}
+
+.rezident {
+    width: 30px;
+    height: 15px;
+}
+.nerezident {
+    width: 30px;
+    height: 15px;
+}
+.zar {
+    font-weight: 200;
+}
+
+input ~ i {
+    margin-left: 20px;
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    transition: color 0.4s;
+}
+
+input:focus ~ i {
+    color: #843bc7;
+}
+input,
+button{
     border: none;
-    text-align:center;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.1em;
 }
 
 
-.container input.calc[type="text"]{
-    position: relative;
+
+
+button.calc {
+    margin-top: 20px;
+    margin-left: 470px;
     width: 350px;
-    height: 35px;
-    margin:auto;
-    top: 20px;
-    left: 100px;
-
+    height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #e6e6e6;
+    color: #333;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 1;
+    letter-spacing: 0.1em;
 }
 
-.container input.fio[type="text"]{
-    position: relative;
+button.calc:hover{
+    opacity: 0.7;
+}
+
+button.genPDF {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 470px;
     width: 350px;
-    height: 35px;
-    margin: auto;
-    top: 75px;
-    left: -255px;
+    height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #e6e6e6;
+    color: #333;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 1;
+    letter-spacing: 0.1em;
 }
 
-.container input.podrazdel[type="text"]{
+button.genPDF:hover{
+    opacity: 0.7;
+}
+
+.header {
+    position: absolute;
+    margin-top: -650px;
+    width: 100%;
+    height: 70px;
+    display: block;
+}
+
+.logo-container {
+     position: relative;
+     height: 100%;
+     display: table;
+     float: left;
+}
+
+.logo-container .logougatu{
     position: relative;
-    width: 350px;
-    height: 35px;
-    margin: auto;
-    top: 100px;
-    left: -55px;
+    top: 13px;
+    left: 130px;
+    width: 13%;
+    cursor: pointer;
 }
 
-.container input.dolj[type="text"]{
-    position: relative;
-    width: 350px;
-    height: 35px;
-    margin: auto;
-    top: 165px;
-    left: -410px;
+.logo-container h1 {
+    font-weight: 200;
+    text-align: center;
 }
 
-.container input.details[type="text"]{
-    position: relative;
-    width: 150px;
-    height: 35px;
-    top: 260px;
-    left: -605px;
+@media (max-width:780px){
+    body {
+        background: #2196f3;
+    }
+
+    .bubbles {
+        display: none;
+    }
+    .header {
+        display: none;
+    }
+    .container{
+        margin-top: 650px;
+        width: 100%;
+        height: 1150px;
+    }
+
+    input {
+        width: 250px;
+
+    }
+    .detailPrice {
+        width: 250px;
+    }
+    .detailsCount {
+        width: 250px;
+    }
+    .penny {
+        width: 250px;
+    }
+    .date {
+        width: 250px;
+    }
+    .output-control {
+        width: 250px;
+        left: -450px;
+        top: 500px;
+    }
+
+    button.calc {
+        position: absolute;
+        margin-top: 500px;
+        left: -450px;
+        width: 300px;
+
+    }
+    button.genPDF {
+        position: absolute;
+        margin-top: 590px;
+        left: -450px; 
+        width: 300px;
+    }
 }
-.container input.detailsPrice[type="text"]{
-    position: relative;
-    width: 150px;
-    height: 35px;
-    top: 285px;
-    left: 103px;
-}
-
-.container input.nadb[type="text"]{
-    position: relative;
-    width: 150px;
-    height: 35px;
-    top: 310px;
-    left: 103px;
-}
-
-
-
-
-
 
