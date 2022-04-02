@@ -162,21 +162,59 @@ button.submitRegister:hover {
     opacity: 0.8;
 }
 
+
+
+
+
 /* ----- Адаптивная верстка ---- */
 
-/* ----- 1000px ---- */
-
-
-
 /* ----- 780px ---- */
-@media (max-width: 780px) {
+@media  (max-width: 780px) {
     body {
+        width: 80%;
         display: flex;
         justify-content:center;
         align-items: center;
     }
     .side {
         display: none;
+    }
+
+    .form-control {
+        margin-left: 81px;
+        width: 350px;
+    }
+    
+    .pas-for {
+        margin-left: 175px;
+    }
+
+    .title {
+        font-size: 2.5em;
+        margin-left: 75px;
+    }
+    
+    .sep {
+        margin-left: 110px;
+        width: 300px;
+    }
+
+    .hello-message {
+        word-break:normal;
+        margin-left: 75px;
+    }
+    .pas-for-linkRegister {
+        margin-left: 150px;
+    }
+
+    button.submitRegister {
+        margin-left: 80px;
+        text-align: center;
+        letter-spacing: normal;
+        width: 350px;
+    }
+    button.submit {
+        margin-left: 160px;
     }
 }
 

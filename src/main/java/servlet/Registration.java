@@ -39,7 +39,7 @@ public class Registration extends HttpServlet {
 	        RequestDispatcher rd = request.getRequestDispatcher("/Main.jsp");  
 	        rd.include(request, response); 
     	}else{
-    		printWriter.print("Login is already taken. Try another login");
+    		printWriter.print("<div class = \"registrationTest\" Login is already taken. Try another login </div>");
 	        RequestDispatcher rd = request.getRequestDispatcher("/Register.jsp");  
 	        rd.include(request, response); 
     	}
