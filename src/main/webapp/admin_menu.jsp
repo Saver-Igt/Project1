@@ -15,14 +15,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Document</title>
     
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img src="./images/ugatu_logo.png" alt=""></a>
+        <a href="#" class="logo"><img src="./images/ugatu-logo.png" alt=""></a>
+        <div class="nameProject">
+            <h1>Зарплатный калькулятор</h1>
+        </div>
         <ul class="menu-bar">
             <li class="About"><a href="./main.html">О калькуляторе</a></li>
             <li class="Dev"><a href="./main.html">Разработчики</a></li>
@@ -48,9 +51,7 @@
         </div>
     </header>
 
-    <div class="nameProject">
-        <h1>Зарплатный калькулятор</h1>
-    </div>
+   
 
 
     <div class="bubbles">

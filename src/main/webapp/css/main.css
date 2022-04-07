@@ -39,8 +39,12 @@ header .menu-bar {
 
 header .menu-bar li {
 	display: inline-block;
-	margin-left: 50px;
 	opacity: 1;
+}
+
+.About {
+	position: absolute;
+	margin-left: -200px;
 }
 
 header .menu-bar li:hover {
@@ -66,11 +70,11 @@ header .menu-bar li a {
 }
 
 .nameProject {
-	font-size: 13px;
-	position: absolute;
-    top: 100px;
-    left: 550px;
-    width: 400px;
+	font-size: 8px;
+	position: relative;
+    top: 20px;
+    left: -85px;
+    width: 350px;
 }
 
 .btns {
@@ -210,7 +214,7 @@ header button:hover {
 .container {
 	margin-top: 70px;
     width: 890px;
-    height: 500px;
+    height: 550px;
     padding: 15px;
     border-radius: 12px;
     backdrop-filter: blur(5px);
@@ -276,7 +280,6 @@ input {
 
 .date {
 	margin-left: 65px;
-    margin-top: 0px;
     width: 300px;
 	height: 35px;
 }
