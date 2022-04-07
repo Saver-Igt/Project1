@@ -38,14 +38,13 @@ public class Registration extends HttpServlet {
 			printWriter.print("<div class =\"regS\">Success! </div>");
 	        request.getRequestDispatcher("/login.jsp").forward(request, response);
     	}else{
-<<<<<<< HEAD
+
     		printWriter.print("<div class =\"test\">Login is already taken. Try another login </div>");
 	        request.getRequestDispatcher("/Register.jsp").forward(request, response); 	       
-=======
+
     		printWriter.print("<div class = \"registrationTest\" Login is already taken. Try another login </div>");
 	        RequestDispatcher rd = request.getRequestDispatcher("/Register.jsp");  
 	        rd.include(request, response); 
->>>>>>> 79cd2a6556429fdcb0b45239d1285adbc63ec11d
     	}
     	
 	}
