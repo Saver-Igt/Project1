@@ -218,7 +218,13 @@ button.submitRegister:hover {
     }
 }
 
+.test{
+	position: absolute;
+	width: 100%;
+	color:green;
+}
+.regS{
+	bottom: 50px;
 
-
-
+}
 

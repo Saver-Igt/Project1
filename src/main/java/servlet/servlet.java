@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.UsersDB;
+import database.User;
 
 @WebServlet("/welcome")
 public class servlet extends HttpServlet {
@@ -22,39 +22,40 @@ public class servlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=utf-8");	
     	
-    	String login = request.getParameter("login");
+		String login = request.getParameter("login");
     	String password = request.getParameter("password");
 	    
     	// База Данных
-    	UsersDB db = new UsersDB();
+    	User user = new User();
     	try {
-			db.connectToSQL();
+			user.connectToSQL();
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-    	db.createStatement();
-    	
-    	if(db.checkForUser(db.getStatement(), login, password)) {
-    		request.getRequestDispatcher("/Main.jsp").forward(request, response);
+    	user.createStatement();
+    	//Проверка
+    	if(user.userIsExist(login, password)) {
+    		user.setRoleFromID(user.getID(login)); 		
+    		request.getSession().setAttribute("password", password);
+            request.getSession().setAttribute("login", login);            
     	}else {
 			PrintWriter printWriter = response.getWriter();
-			printWriter.print("Sorry UserName or Password Error!");  
-	        RequestDispatcher rd = request.getRequestDispatcher("/start.jsp");  
-	        rd.include(request, response);  
+			printWriter.print("Sorry UserName or Password Error!");
 		} 
-		
-    // Проверка без БД логин 123 и пароль 123
-    // 
-	/*	if (login.equals("123") && password.equals("123")) {
-			request.getRequestDispatcher("/Main.jsp").forward(request, response);
-		}else {
-			PrintWriter printWriter = response.getWriter();
-			printWriter.print("Sorry UserName or Password Error!");  
-	        RequestDispatcher rd = request.getRequestDispatcher("/start.jsp");  
-	        rd.include(request, response);  
-		} 
-	*/
+    	request.getSession().setAttribute("role", user.getRole());
+    	redirect(request, response);
     	
+	}
+	public void redirect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("role") == User.ROLE.USER) {
+			response.sendRedirect("user_menu.jsp");
+			//request.getRequestDispatcher("/user_menu.jsp").forward(request, response);
+		}else if(request.getSession().getAttribute("role") == User.ROLE.ADMIN) {
+			response.sendRedirect("admin_menu.jsp");
+			//request.getRequestDispatcher("/admin_menu.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
 	}
 	 @Override
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

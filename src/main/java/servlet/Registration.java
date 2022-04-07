@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.UsersDB;
+import database.User;
 @WebServlet("/registretion")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,43 +19,35 @@ public class Registration extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=utf-8");	
-    	
-    	String login = request.getParameter("login");
+		
+		String login = request.getParameter("login");
     	String password = request.getParameter("password");
     	
     	// База Данных
-    	UsersDB db = new UsersDB();
+    	User user = new User();
     	try {
-			db.connectToSQL();
+			user.connectToSQL();
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-    	db.createStatement();
+    	user.createStatement();
     	PrintWriter printWriter = response.getWriter();
     	
-    	if(!db.checkForUniqueLogin(db.getStatement(), login)) {
-    		db.insertInBase(db.getStatement(), login, password);
-			printWriter.print("Registration success!");
-	        RequestDispatcher rd = request.getRequestDispatcher("/Main.jsp");  
-	        rd.include(request, response); 
+    	if(!user.checkForUniqueLogin(login)) {
+    		user.insertInBase(login, password);
+			printWriter.print("<div class =\"regS\">Success! </div>");
+	        request.getRequestDispatcher("/login.jsp").forward(request, response);
     	}else{
+<<<<<<< HEAD
+    		printWriter.print("<div class =\"test\">Login is already taken. Try another login </div>");
+	        request.getRequestDispatcher("/Register.jsp").forward(request, response); 	       
+=======
     		printWriter.print("<div class = \"registrationTest\" Login is already taken. Try another login </div>");
 	        RequestDispatcher rd = request.getRequestDispatcher("/Register.jsp");  
 	        rd.include(request, response); 
+>>>>>>> 79cd2a6556429fdcb0b45239d1285adbc63ec11d
     	}
     	
-    //Проверка без БД	
-    /*	if(login.equals("admin")) {
-    		System.out.println("Login is already taken. Try another login");
-	        RequestDispatcher rd = request.getRequestDispatcher("/Register.jsp");  
-	        rd.include(request, response); 
-    	}else {
-    		
-			printWriter.print("Registration success!");
-	        RequestDispatcher rd = request.getRequestDispatcher("/Main.jsp");  
-	        rd.include(request, response); 
-    	}
-    	*/
 	}
 
 }

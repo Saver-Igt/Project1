@@ -4,11 +4,13 @@
     <servlet-name>servlet</servlet-name>
     <servlet-class>servlet.servlet</servlet-class>
   </servlet>
-  
-  
-  
+  <servlet>
+    <servlet-name>Registration</servlet-name>
+    <servlet-class>servlet.Registration</servlet-class>
+  </servlet>
+   
   <welcome-file-list>
-    <welcome-file>start.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   
   <resource-ref>
