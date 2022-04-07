@@ -7,8 +7,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    height: 100vh;
+.main-body {
+	height: 100vh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -16,6 +16,101 @@ body {
     background: linear-gradient(#2196f3, #e91e63);
     align-items: center;
 }
+
+header {
+	position: absolute;
+	right: 100px;
+	margin: 20px;
+	width: 100%;
+	max-width: 85%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(52, 79, 121, .56);
+}
+
+header .menu-bar {
+	list-style-type: none;
+}
+
+header .menu-bar li {
+	display: inline-block;
+	margin-left: 50px;
+	opacity: 1;
+}
+
+header .menu-bar li:hover {
+	opacity: 0.7;
+}
+
+header .menu-bar li a {
+	color: rgb(36, 34, 34);
+	display: block;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.prava {
+	position: absolute;
+	left: 730px;
+	color: rgb(36, 34, 34);
+	display: block;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.nameProject {
+	font-size: 13px;
+	position: absolute;
+    top: 100px;
+    left: 550px;
+    width: 100%;
+}
+
+.btns {
+	position: absolute;
+	right: 10px;
+	margin-left: 750px;
+}
+
+
+
+
+
+
+
+img {
+	max-width: 150px;
+	max-height: 200px;
+}
+
+header button {
+	font-size: 13px;
+    width: 130px;
+    height: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #e6e6e6;
+    color: #333;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 1;
+    letter-spacing: 0.1em;
+}
+
+header button:hover {
+	opacity: 0.7;
+}
+
+
+
 
 .bubbles {
     position: absolute;
@@ -112,6 +207,7 @@ body {
 }
 
 .container {
+	margin-top: 70px;
     width: 890px;
     height: 500px;
     padding: 15px;
@@ -166,23 +262,25 @@ input {
 }
 
 .detailsCount {
-    width: 350px;
+    width: 400px;
 }
 
 .detailPrice {
-    width: 350px;
+    width: 400px;
 }
 
 .penny {
-    width: 350px;
+    width: 400px;
 }
 
 .date {
+	margin-left: 65px;
     margin-top: 0px;
     width: 300px;
 }
 
 .rezident {
+	margin-left: 60px;
     width: 30px;
     height: 15px;
 }
@@ -208,12 +306,14 @@ input:focus ~ i {
     color: #843bc7;
 }
 input,
-button{
+button {
     border: none;
     outline: none;
     border-radius: 20px;
     font-size: 1.1em;
 }
+
+
 
 
 
@@ -301,9 +401,12 @@ button.genPDF:hover{
         display: none;
     }
     .container{
+		position: absolute;
         margin-top: 650px;
         width: 100%;
         height: 1150px;
+		justify-content: center;
+		align-items: center;
     }
 
     input {
@@ -342,4 +445,7 @@ button.genPDF:hover{
         width: 300px;
     }
 }
+
+
+
 

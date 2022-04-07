@@ -9,19 +9,39 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Document</title>
+    
 </head>
 <body>
-    <div class="header">
-        <div class="logo-container">
-            <img src="./images/ugatu_logo.png" alt="" class="logougatu">
-            <h1 class="zar">Зарплатный <span>калькулятор</span></h1>
+    <header>
+        <a href="#" class="logo"><img src="./images/ugatu_logo.png" alt=""></a>
+        <ul class="menu-bar">
+            <li class="About"><a href="./main.html">О калькуляторе</a></li>
+            <li class="Dev"><a href="./main.html">Разработчики</a></li>
+        </ul>
+        
+        <div class="prava">
+            <h3>Права досупа: Администратор</h3>
         </div>
+        <div class="btns">
+            <button class="logout">
+                <i class="fa-solid fa-gear"></i>
+                Настройки
+                
+                
+            </button>
+            <button class="settings">
+                <i class="fa-solid fa-arrow-right-from-bracket"> </i> 
+                Выход
+                
+            </button>
+            
+            
+        </div>
+    </header>
 
-
+    <div class="nameProject">
+        <h1>Зарплатный калькулятор</h1>
     </div>
-
-
-
 
 
     <div class="bubbles">
@@ -34,6 +54,7 @@
         <span class="seven"></span>
     </div>
 
+    <div class="main-body">
     <div class="container">
         <form class="login-form">
             <div class="form-control">
@@ -126,8 +147,11 @@
         </form>
 
     </div>
+</div>
 
 
+        
+    
     
 </body>
 </html>
