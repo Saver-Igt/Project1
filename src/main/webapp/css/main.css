@@ -6,11 +6,14 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+body {
+	max-width: 100%;
+}
 
 
 .main-body {
 	height: 100vh;
-    width: 100%;
+	width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -20,10 +23,8 @@
 
 header {
 	position: absolute;
-	right: 100px;
-	margin: 20px;
+	padding: 10px;
 	width: 100%;
-	max-width: 85%;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -60,8 +61,9 @@ header .menu-bar li a {
 }
 
 .prava {
-	position: absolute;
-	left: 700px;
+	width: 50%;
+	position: relative;
+	left: 100px;
 	color: rgb(36, 34, 34);
 	display: block;
 	text-decoration: none;
@@ -78,9 +80,9 @@ header .menu-bar li a {
 }
 
 .btns {
-	position: absolute;
-	right: 10px;
-	left: 920px;
+	position: relative;
+
+	left: 50px;
 }
 
 
@@ -113,6 +115,8 @@ header button {
 header button:hover {
 	opacity: 0.7;
 }
+
+
 
 
 
@@ -212,10 +216,10 @@ header button:hover {
 }
 
 .container {
-	margin-top: 70px;
+	margin-top: 0px;
     width: 890px;
     height: 550px;
-    padding: 15px;
+    padding: 20px;
     border-radius: 12px;
     backdrop-filter: blur(5px);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -226,7 +230,7 @@ header button:hover {
 
 
 .output-form{
-    width: 100%;
+    width: 100px;
     margin-top: -450px;
     margin-left: 470px;
     display: flex;
@@ -366,33 +370,11 @@ button.genPDF:hover{
     opacity: 0.7;
 }
 
-.header {
-    position: absolute;
-    margin-top: -650px;
-    width: 100%;
-    height: 70px;
-    display: block;
-}
 
-.logo-container {
-     position: relative;
-     height: 100%;
-     display: table;
-     float: left;
-}
 
-.logo-container .logougatu{
-    position: relative;
-    top: 13px;
-    left: 130px;
-    width: 13%;
-    cursor: pointer;
-}
 
-.logo-container h1 {
-    font-weight: 200;
-    text-align: center;
-}
+
+
 
 @media (max-width:780px){
     body {

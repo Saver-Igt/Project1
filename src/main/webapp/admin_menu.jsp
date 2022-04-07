@@ -15,14 +15,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Document</title>
     
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img src="./images/ugatu-logo.png" alt=""></a>
+        <a href="#" class="logo"><img src="./images/ugatu_logo.png" alt=""></a>
         <div class="nameProject">
             <h1>Зарплатный калькулятор</h1>
         </div>
