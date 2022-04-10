@@ -6,13 +6,22 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body {
-	max-width: 100%;
+/* убрать scroll bar*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
-
-
+body {
+	
+	max-width: 100%;
+	max-height: 100%;
+}
+body.lock {
+	overflow: hidden;
+}
 .main-body {
-	height: 100vh;
+	
+	height: 100%;
 	width: 100%;
     overflow: hidden;
     display: flex;
@@ -22,7 +31,7 @@ body {
 }
 
 header {
-	position: absolute;
+	position: fixed;
 	padding: 10px;
 	width: 100%;
 	display: -webkit-flex;
@@ -46,10 +55,6 @@ header .menu-bar li {
 .About {
 	position: absolute;
 	margin-left: -200px;
-}
-
-header .menu-bar li:hover {
-	opacity: 0.7;
 }
 
 header .menu-bar li a {
@@ -81,19 +86,13 @@ header .menu-bar li a {
 
 .btns {
 	position: relative;
-
 	left: 50px;
 }
-
-
-
-
-
-
 
 img {
 	max-width: 150px;
 	max-height: 200px;
+
 }
 
 header button {
@@ -111,15 +110,6 @@ header button {
     opacity: 1;
     letter-spacing: 0.1em;
 }
-
-header button:hover {
-	opacity: 0.7;
-}
-
-
-
-
-
 
 .bubbles {
     position: absolute;
@@ -216,6 +206,7 @@ header button:hover {
 }
 
 .container {
+	
 	margin-top: 0px;
     width: 890px;
     height: 550px;
@@ -226,8 +217,6 @@ header button:hover {
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .output-form{
     width: 100px;
@@ -322,11 +311,6 @@ button {
     font-size: 1.1em;
 }
 
-
-
-
-
-
 button.calc {
     margin-top: 20px;
     margin-left: 470px;
@@ -342,10 +326,6 @@ button.calc {
     transition: 0.4s;
     opacity: 1;
     letter-spacing: 0.1em;
-}
-
-button.calc:hover{
-    opacity: 0.7;
 }
 
 button.genPDF {
@@ -365,16 +345,6 @@ button.genPDF {
     opacity: 1;
     letter-spacing: 0.1em;
 }
-
-button.genPDF:hover{
-    opacity: 0.7;
-}
-
-
-
-
-
-
 
 @media (max-width:780px){
     body {
@@ -432,7 +402,3 @@ button.genPDF:hover{
         width: 300px;
     }
 }
-
-
-
-

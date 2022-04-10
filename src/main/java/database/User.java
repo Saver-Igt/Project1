@@ -21,7 +21,7 @@ public class User extends DataBase{
 	 */
 	public void insertInBase(String login,String password) {
 		String insert = "INSERT INTO Users.dbo.Users (login,password,Role) VALUES ('"+
-				login + "', '" + password + "', 'SimpleUser')";
+				login + "', '" + password + "', 'USER')";
 		try {
 			statement.executeUpdate(insert);
 			System.out.println("Data inserted");
