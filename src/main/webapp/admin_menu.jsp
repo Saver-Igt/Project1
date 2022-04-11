@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"
     import="database.User"
     %>
-<%
-	if(session.getAttribute("role") != User.ROLE.ADMIN){
-		response.sendRedirect("login.jsp");
-	}
-%>
+
 <style> 
 <%@include file="/css/main.css"%> 
 <%@include file="/css/popup.css"%> 

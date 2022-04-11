@@ -19,6 +19,8 @@ body {
 body.lock {
 	overflow: hidden;
 }
+
+
 .main-body {
 	
 	height: 100%;
@@ -39,7 +41,6 @@ header {
 	display: flex;
 	-ms-align-items: center;
 	align-items: center;
-	padding-bottom: 10px;
 	border-bottom: 1px solid rgba(52, 79, 121, .56);
 }
 
@@ -84,10 +85,7 @@ header .menu-bar li a {
     width: 350px;
 }
 
-.btns {
-	position: relative;
-	left: 50px;
-}
+
 
 img {
 	max-width: 150px;
@@ -95,7 +93,11 @@ img {
 
 }
 
+
+
 header button {
+	margin-top: 5px;
+
 	font-size: 13px;
     width: 130px;
     height: 30px;
@@ -103,7 +105,7 @@ header button {
     text-transform: uppercase;
     background-color: #e6e6e6;
     color: #333;
-    letter-spacing: 2px;
+
     font-weight: bold;
     cursor: pointer;
     transition: 0.4s;
@@ -111,11 +113,14 @@ header button {
     letter-spacing: 0.1em;
 }
 
+
+
+
 .bubbles {
     position: absolute;
     bottom: 100px;
     display: flex;
-    width: 100%;
+    width: 99%;
     justify-content: space-between;
 }
 
@@ -207,7 +212,7 @@ header button {
 
 .container {
 	
-	margin-top: 0px;
+	margin-top: 50px;
     width: 890px;
     height: 550px;
     padding: 20px;
