@@ -350,6 +350,60 @@ button.genPDF {
     opacity: 1;
     letter-spacing: 0.1em;
 }
+  button.settings_button{
+  	color: #fff;
+    padding: 14px 64px;
+    margin: 12px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #8b33c5, #15a0e1);
+    cursor: pointer;
+    transition: opacity 0.4s;
+}
+.logout_quest {
+	min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+button.logout_yes {
+	color: #fff;
+    padding: 14px 64px;
+    margin: 12px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #8b33c5, #15a0e1);
+    cursor: pointer;
+    transition: opacity 0.4s;
+}
+
+button.logout_no {
+	color: #fff;
+    padding: 14px 64px;
+    margin: 12px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #8b33c5, #15a0e1);
+    cursor: pointer;
+    transition: opacity 0.4s;
+}
+
+button:hover {
+	opacity: 0.7;
+}
+
+.About:hover {
+	opacity: 0.7;
+}
+
+.Dev {
+	opacity: 0.7;
+}
 
 @media (max-width:780px){
     body {
@@ -400,6 +454,7 @@ button.genPDF {
         width: 300px;
 
     }
+
     button.genPDF {
         position: absolute;
         margin-top: 590px;

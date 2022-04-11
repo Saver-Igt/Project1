@@ -8,6 +8,7 @@
 <%@include file="/css/popup.css"%> 
 </style>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,21 +27,25 @@
         </div>
         <ul class="menu-bar">
             <li class="About"><a href="#popup" class="popup-link">О калькуляторе</a></li>
-            <li class="Dev"><a href="./main.html">Разработчики</a></li>
+            <li class="Dev"><a href="#popup_2" class="popup-link">Разработчики</a></li>
         </ul>
         
         <div class="prava">
             <h3>Права досупа: Администратор</h3>
         </div>
         <div class="btns">
+        <a href="#popup_3" class= "popup-link">
             <button class="settings">
                 <i class="fa-solid fa-gear"></i>
                 Настройки   
             </button>
+            </a>
+        <a href="popup_4" class=popup-link>
             <button class="logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"> </i> 
                 Выход   
             </button>
+            </a>
             
         </div>
     </header>
@@ -108,7 +113,7 @@
             </div>
 
             <div class="output-control">
-                <p>НДФЛ 13%: <output name="result"></output></p>
+                <p>НДФЛ: <output name="result"></output></p>
             </div>
 
             <div class="output-control">
@@ -148,25 +153,85 @@
     <div class="popup_body">
         <div class="popup_content">
             <a href="#header" class="popup_close close-popup">X</a>
-            <div class="popup_title">Это модальное окно 1</div>
+            <div class="popup_title">Описание калькулятора</div>
             <div class="popup_text">
-                <a href="#popup_2" class="popup-link">окно 2</a>
-               Описание калькулятора
+     Калькулятор рассчитывает заработную плату <br>по введенным данным и генерирует PDF-файл.
+            </div>
             </div>
         </div>
     </div>
-</div>
+
 <div id="popup_2" class="popup">
     <div class="popup_body">
         <div class="popup_content">
             <a href="#header" class="popup_close close-popup">X</a>
-            <div class="popup_title">Это модальное окно 2 </div>
+            <div class="popup_title">Команда разработчиков</div>
             <div class="popup_text">
-               Новое окно
+                Модератор - Аюпов Т.Р. (<a href = "#">Github</a>)<br>
+                Разработчик 1  - Сираев Р.В. (<a href = "#">Github</a>)<br>
+                Разработчик 2 - Фахретдинов Р.Н. (<a href = "#">Github</a>)<br>
+                Разработчик 3 - Хасанов Р.А. (<a href = "#">Github</a>)
         	</div>
    		</div>
 	</div>
 </div>
+
+<div id="popup_3" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#header" class="popup_close close-popup">X</a>
+            <div class="popup_title">Настройка коэффициентов</div>
+             <form class="login-form">
+            <div class="form-control">
+                <input type="text" placeholder="НДФЛ">
+                <i class="fa-solid fa-building-ngo"></i>
+            </div>
+
+            <div class="form-control">
+                <input type="text" placeholder="ПФ">
+                <i class="fas fa-person-cane"></i>
+            </div>
+
+            <div class="form-control">
+                <input type="text" placeholder="ФОМС">
+                <i class="fa-solid fa-house-chimney-medical"></i>
+            </div>
+
+            <div class="form-control">
+                <input  type="text" placeholder="ФСС">
+                <i class="fas fa-user-plus"></i>
+            </div>
+
+            <div class="form-control">
+                <input class="detailsCount" type="text" placeholder="ФСС НС">
+                <i class="fa-solid fa-lungs-virus"></i>
+            </div>
+            <div>
+                <button class="settings_button">Внести изменения</button>
+            </div>
+
+          
+        </form>
+   		</div>
+	</div>
+</div>
+
+<div id="popup_4" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#header" class="popup_close close-popup">X</a>
+            <div class="popup_title">Вы точно хотите выйти ?</div>
+            <div class="logout_quest">
+                <button class="logout_yes">Да</button>
+                <button class="logout_no">Нет</button>
+            </div>
+            
+   		</div>
+	</div>
+</div>
+	
+	
+
 </body>
 <script src="js/popups.js" type="text/javascript"></script>
 </html>
