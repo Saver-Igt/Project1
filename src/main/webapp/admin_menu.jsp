@@ -117,29 +117,57 @@
                 if(request.getAttribute("salary")!=null) {
                 	out.print(request.getAttribute("salary"));
                 }
-                
                 %>
                  <output name="result"></output></p>
             </div>
 
             <div class="output-control">
-                <p>НДФЛ: <output name="result"></output></p>
+                <p>НДФЛ:
+                <%
+                if(request.getAttribute("NDFL")!=null) {
+                	out.print(request.getAttribute("NDFL"));
+                }
+                %>
+                 <output name="result"></output></p>
             </div>
 
             <div class="output-control">
-                <p>ПФ: <output name="result"></output></p>
+                <p>ПФ:
+                <%
+                if(request.getAttribute("PF")!=null) {
+                	out.print(request.getAttribute("PF"));
+                }
+                %> 
+                <output name="result"></output></p>
             </div>
 
             <div class="output-control">
-                <p>ФОМС: <output name="result"></output></p>
+                <p>ФОМС:
+                <%
+                if(request.getAttribute("FOMS")!=null) {
+                	out.print(request.getAttribute("FOMS"));
+                } 
+                %> 
+                <output name="result"></output></p>
             </div>
 
             <div class="output-control">
-                <p>ФСС: <output name="result"></output></p>
+                <p>ФСС: 
+                <%
+                if(request.getAttribute("FSS")!=null) {
+                	out.print(request.getAttribute("FSS"));
+                } 
+                %>
+                <output name="result"></output></p>
             </div>
 
             <div class="output-control">
-                <p>ФСС НС: <output name="result"></output></p>
+                <p>ФСС НС:
+                <%
+                if(request.getAttribute("FSSNS")!=null) {
+                	out.print(request.getAttribute("FSSNS"));
+                } 
+                %> <output name="result"></output></p>
             </div>
 
         </form>

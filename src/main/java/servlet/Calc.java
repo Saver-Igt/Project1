@@ -29,7 +29,17 @@ public class Calc extends HttpServlet {
 		int allowance = Integer.parseInt(request.getParameter("allowance"));
 		Salary salaryOb = new Salary(amountDetails,cost,allowance);
 		long salary = salaryOb.calc();
+		Tax ndfl = new Tax(13);
+		Deducation PF = new Deducation(22);
+		Deducation FOMS = new Deducation(51); 
+		Deducation FSS = new Deducation(29);  
+		Deducation FSSNS = new Deducation(2); 
 		request.setAttribute("salary", salary);
+		request.setAttribute("NDFL", ndfl.calc());
+		request.setAttribute("PF", PF.calc());
+		request.setAttribute("FOMS", FOMS.calc());
+		request.setAttribute("FSS", FSS.calc());
+		request.setAttribute("FSSNS", FSSNS.calc());
 		
 		doGet(request, response);
 	}
