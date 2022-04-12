@@ -62,7 +62,7 @@
 
     <div class="main-body">
     <div class="container">
-        <form class="login-form">
+        <form class="login-form" method = "post" action = "Calc">
             <div class="form-control">
                 <input type="text" placeholder="Название организации">
                 <i class="fa-solid fa-building"></i>
@@ -105,11 +105,21 @@
             <p>
                 <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>
             </p>
+            <div>
+                <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>
+            </div>
         </form>
         <form class="output-form">
 
             <div class="output-control">
-                <p class="sumSotr">Сумма сотруднику: <output name="result"></output></p>
+                <p class="sumSotr">Сумма сотруднику:
+                <%
+                if(request.getAttribute("salary")!=null) {
+                	out.print(request.getAttribute("salary"));
+                }
+                
+                %>
+                 <output name="result"></output></p>
             </div>
 
             <div class="output-control">
@@ -135,9 +145,7 @@
         </form>
 
         <form>
-            <div>
-                <button class="calc">Расчет</button>
-            </div>
+            
         
             <div>
                 <button class="genPDF">
