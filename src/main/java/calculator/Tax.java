@@ -10,14 +10,14 @@ package calculator;
 public final class Tax extends Calculation{
 
     /** Процент налога */
-    private int percent;
+    private float percent;
 
     /**
      * Конструктор класса
      *
      * @param percent передаваемый процент
      */
-    public Tax(int percent) {
+    public Tax(float percent) {
         this.percent = percent;
     }
 
@@ -27,7 +27,7 @@ public final class Tax extends Calculation{
      * @return количество изымаемого налога
      */
     @Override
-    public long calc() {
+    public float calc() {
         return super.netSalary * percent /100;
     }
 }

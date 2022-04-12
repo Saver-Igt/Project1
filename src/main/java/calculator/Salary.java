@@ -41,10 +41,10 @@ public final class Salary extends Calculation{
      * @return зарплату, которую получит сотрудник
      */
     @Override
-    public long calc() {
+    public float calc() {
         super.calcNetSalary(amount,cost,allowance);
         Tax ndfl = new Tax(percent);
-        cess = ndfl.calc();
+        cess = (long) ndfl.calc();
         return super.netSalary - cess;
     }
 

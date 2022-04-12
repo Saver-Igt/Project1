@@ -8,7 +8,7 @@ package calculator;
 public final class Deducation extends Calculation{
 
     /** Процент вычета */
-    private int percent;
+    private float percent;
 
     /** Константа */
     private final int constant = 100;
@@ -18,7 +18,7 @@ public final class Deducation extends Calculation{
      *
      * @param percent передаваемый процент
      */
-    public Deducation(int percent) {
+    public Deducation(float percent) {
         this.percent = percent;
     }
 
@@ -28,7 +28,7 @@ public final class Deducation extends Calculation{
      * @return вычет 
     */
     @Override
-    public long calc() {
+    public float calc() {
         return super.netSalary*percent/constant;
     }
 

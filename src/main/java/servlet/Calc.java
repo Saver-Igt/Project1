@@ -28,12 +28,13 @@ public class Calc extends HttpServlet {
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		int allowance = Integer.parseInt(request.getParameter("allowance"));
 		Salary salaryOb = new Salary(amountDetails,cost,allowance);
-		long salary = salaryOb.calc();
+		float salary = salaryOb.calc();
 		Tax ndfl = new Tax(13);
 		Deducation PF = new Deducation(22);
-		Deducation FOMS = new Deducation(51); 
-		Deducation FSS = new Deducation(29);  
-		Deducation FSSNS = new Deducation(2); 
+		Deducation FOMS = new Deducation(5.1f); 
+		Deducation FSS = new Deducation(2.9f);  
+		Deducation FSSNS = new Deducation(0.2f); 
+		
 		request.setAttribute("salary", salary);
 		request.setAttribute("NDFL", ndfl.calc());
 		request.setAttribute("PF", PF.calc());
@@ -42,6 +43,19 @@ public class Calc extends HttpServlet {
 		request.setAttribute("FSSNS", FSSNS.calc());
 		
 		doGet(request, response);
+	}
+	/**
+	 * Метод приводит результат к нужному формату (две цифры после запятой).
+	 *
+	 * @param value значение, полученное в ходе вычислений
+	 * @param div делитель
+	 * @return Строка с результатом
+	 */
+	public final String getString(long value, int div) {
+		float res;
+		res = (float) value / div;
+		String result = String.format("%.2f",res);
+		return result + " руб.";
 	}
 
 }

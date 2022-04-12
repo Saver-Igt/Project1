@@ -9,12 +9,12 @@ package calculator;
 public abstract class Calculation {
 	
 	/** заработная плата до вычета налога. */
-	public static long netSalary = 0; 
+	public static float netSalary = 0; 
 	/**
 	 * Абстрактный метод (для наследников) для вычислений.
 	 * @return the long
 	 */
-	public abstract long calc();
+	public abstract float calc();
 	
 	/**
 	 * Метод, вычисляющий заработную плату до вычета налога.
