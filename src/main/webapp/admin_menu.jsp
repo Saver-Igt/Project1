@@ -84,17 +84,17 @@
             </div>
 
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="Количество деталей">
+                <input class="detailsCount" type="text" placeholder="Количество деталей" name="amountDetails">
                 <i class="fa-solid fa-cubes-stacked"></i>
             </div>
 
             <div class="form-control">
-                <input class="detailPrice" type="text" placeholder="Ставка детали">
+                <input class="detailPrice" type="text" placeholder="Ставка детали" name="cost">
                 <i class="fa-solid fa-coins"></i>
             </div>
 
             <div class="form-control">
-                <input class="penny" type="text" placeholder="Надбавка">
+                <input class="penny" type="text" placeholder="Надбавка" name="allowance">
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
 
