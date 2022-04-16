@@ -105,8 +105,9 @@
             <p>
                 <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>
             </p>
-            <div>
+            <div class = "calcANDgen">
                 <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>
+                <button class="genPDF"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
             </div>
         </form>
         <form class="output-form">
@@ -175,12 +176,7 @@
         <form>
             
         
-            <div>
-                <button class="genPDF">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Сгенерировать PDF
-                </button>
-            </div>
+            
         </form>
     </div>
 </div>

@@ -225,7 +225,7 @@ header button {
 
 .output-form{
     width: 100px;
-    margin-top: -450px;
+    margin-top: -460px;
     margin-left: 470px;
     display: flex;
     flex-direction: column;
@@ -234,7 +234,7 @@ header button {
 .output-control {
     width: 350px;
     position: relative;
-    margin-bottom: 10px;
+	margin-bottom: 10px;
     outline: 1px solid #000; 
     border-radius: 10px;
     background: transparent;
@@ -283,7 +283,7 @@ input {
 }
 
 .rezident {
-	margin-left: 60px;
+	margin-left:60px;
     width: 30px;
     height: 15px;
 }
@@ -315,10 +315,16 @@ button {
     border-radius: 20px;
     font-size: 1.1em;
 }
+.calcANDgen {
+	position:absolute;
+	width: 350px;
+	height: 100px;
+}
 
 button.calc {
-    margin-top: 20px;
-    margin-left: 470px;
+	position:absolute;
+	margin-top: 350px;
+   	margin-left: 470px;
     width: 350px;
     height: 50px;
     color: #fff;
@@ -334,8 +340,8 @@ button.calc {
 }
 
 button.genPDF {
-    position: absolute;
-    margin-top: 20px;
+	position:absolute;
+    margin-top: 415px;
     margin-left: 470px;
     width: 350px;
     height: 50px;
