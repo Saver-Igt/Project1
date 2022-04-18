@@ -117,61 +117,38 @@
 
             <div class="output-control">
                 <p class="sumSotr">Сумма сотруднику:
-                <%
-                if(request.getAttribute("salary")!=null) {
-                	out.print(request.getAttribute("salary"));
-                }
-                %>
+               ${salary}
                  <output name="result"></output></p>
             </div>
 
             <div class="output-control">
                 <p>НДФЛ:
-                <%
-                if(request.getAttribute("NDFL")!=null) {
-                	out.print(request.getAttribute("NDFL"));
-                }
-                %>
+                ${NDFL}
                  <output name="result"></output></p>
             </div>
 
             <div class="output-control">
                 <p>ПФ:
-                <%
-                if(request.getAttribute("PF")!=null) {
-                	out.print(request.getAttribute("PF"));
-                }
-                %> 
+                ${PF} 
                 <output name="result"></output></p>
             </div>
 
             <div class="output-control">
                 <p>ФОМС:
-                <%
-                if(request.getAttribute("FOMS")!=null) {
-                	out.print(request.getAttribute("FOMS"));
-                } 
-                %> 
+                ${FOMS}
                 <output name="result"></output></p>
             </div>
 
             <div class="output-control">
                 <p>ФСС: 
-                <%
-                if(request.getAttribute("FSS")!=null) {
-                	out.print(request.getAttribute("FSS"));
-                } 
-                %>
+                ${FSS}
                 <output name="result"></output></p>
             </div>
 
             <div class="output-control">
                 <p>ФСС НС:
-                <%
-                if(request.getAttribute("FSSNS")!=null) {
-                	out.print(request.getAttribute("FSSNS"));
-                } 
-                %> <output name="result"></output></p>
+                ${FSSNS} 
+                <output name="result"></output></p>
             </div>
 
         </form>
