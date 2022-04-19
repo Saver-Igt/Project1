@@ -169,29 +169,29 @@
         <div class="popup_content">
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Настройка коэффициентов</div>
-             <form class="login-form">
+             <form class="login-form" action="settings" method="post">
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ">
+                <input type="text" placeholder="НДФЛ" name="NDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ПФ">
+                <input type="text" placeholder="ПФ" name="PF">
                 <i class="fas fa-person-cane"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ФОМС">
+                <input type="text" placeholder="ФОМС" name="FOMS">
                 <i class="fa-solid fa-house-chimney-medical"></i>
             </div>
             <div class="form-control">
-                <input  type="text" placeholder="ФСС">
+                <input  type="text" placeholder="ФСС" name="FSS">
                 <i class="fas fa-user-plus"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="ФСС НС">
+                <input class="detailsCount" type="text" placeholder="ФСС НС" name="FSSNS">
                 <i class="fa-solid fa-lungs-virus"></i>
             </div>
             <div>
-                <button class="settings_button" onclick = "form.action = 'Calc'; form.method = 'post'">Внести изменения</button>
+                <button class="settings_button" onclick = "form.action = 'settings'; form.method = 'post'">Внести изменения</button>
             </div>
         </form>
    		</div>

@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Coefficients extends DataBase{
-	public float getPercentFromID() {
+	public float getPercentFromID(int ID) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT Value FROM Users.dbo.Coefficient");
+			ResultSet resultSet = statement.executeQuery("SELECT Value FROM Users.dbo.Coefficient WHERE ID = "+ ID);
 			while(resultSet.next()){
 				return Float.parseFloat(resultSet.getString(1));
                 }          
@@ -14,5 +14,14 @@ public class Coefficients extends DataBase{
             	e.printStackTrace();
             }
 			return 0f;
+	}
+	public void setPercentFromID(float value, int ID) {
+		String sqlCommand = "UPDATE Users.dbo.Coefficient SET Value = " + value +
+				"WHERE ID = " + ID;
+		try {
+			statement.executeUpdate(sqlCommand);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
