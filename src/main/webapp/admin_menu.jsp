@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"
     import="database.User"
     %>
-
+<%
+// Чтобы зайти на форму - закоментить эту часть
+	if(session.getAttribute("role")!= User.ROLE.ADMIN){
+		response.sendRedirect("login.jsp");
+	}
+%>
 <style> 
 <%@include file="/css/main.css"%> 
 <%@include file="/css/popup.css"%> 
@@ -99,7 +104,7 @@
             </p>
             <div class = "calcANDgen">
                 <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>
-                <button class="genPDF"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
+                <button class="genPDF" onclick = "form.action = 'CreatePDF'; form.method = 'post'"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
             </div>
         </form>
         <form class="output-form">
@@ -108,23 +113,23 @@
                  <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>НДФЛ:${NDFL}
+                <p>НДФЛ: ${NDFL}
                  <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ПФ:${PF} 
+                <p>ПФ: ${PF} 
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФОМС:${FOMS}
+                <p>ФОМС: ${FOMS}
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФСС:${FSS}
+                <p>ФСС: ${FSS}
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФСС НС:${FSSNS} 
+                <p>ФСС НС: ${FSSNS} 
                 <output name="result"></output></p>
             </div>
         </form>
@@ -186,7 +191,7 @@
                 <i class="fa-solid fa-lungs-virus"></i>
             </div>
             <div>
-                <button class="settings_button">Внести изменения</button>
+                <button class="settings_button" onclick = "form.action = 'Calc'; form.method = 'post'">Внести изменения</button>
             </div>
         </form>
    		</div>
@@ -199,8 +204,10 @@
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Вы точно хотите выйти ?</div>
             <div class="logout_quest">
-                <button class="logout_yes">Да</button>
+            <form>
+                <button class="logout_yes" onclick = "form.action = 'logout'; form.method = 'post'">Да</button>
                 <button class="logout_no close-popup" >Нет</button>
+            </form> 
             </div>  
    		</div>
 	</div>
