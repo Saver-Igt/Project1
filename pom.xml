@@ -6,12 +6,6 @@
   <packaging>war</packaging>
 <dependencies>
 <dependency>
-    	<groupId>CreatePDF</groupId>
-    	<artifactId>PDFv.2.0</artifactId>
-    	<version>2.0</version>
-    	<type>jar</type>
-    </dependency>
-<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
 		<version>4.13.1</version>
