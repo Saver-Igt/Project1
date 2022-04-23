@@ -32,7 +32,7 @@
             <h1>Зарплатный калькулятор</h1>
         </div>
         <ul class="menu-bar">
-            <li class="About"><a href="#popup" class="popup-link">О калькуляторе</a></li>
+            <li class="About"><a href="http://88.99.186.187/mediawiki" class="popup-link">О калькуляторе</a></li>
             <li class="Dev"><a href="#popup_2" class="popup-link">Разработчики</a></li>
         </ul>
         <div class="prava">
