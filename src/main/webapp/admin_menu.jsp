@@ -32,7 +32,7 @@
             <h1>Зарплатный калькулятор</h1>
         </div>
         <ul class="menu-bar">
-            <li class="About"><a href="http://88.99.186.187/mediawiki" class="popup-link">О калькуляторе</a></li>
+            <li class="About"><a href="http://88.99.186.187/mediawiki" target="_blank">О калькуляторе</a></li>
             <li class="Dev"><a href="#popup_2" class="popup-link">Разработчики</a></li>
         </ul>
         <div class="prava">
@@ -155,10 +155,10 @@
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Команда разработчиков</div>
             <div class="popup_text">
-                Модератор - Аюпов Т.Р. (<a href = "#">Github</a>)<br>
-                Разработчик 1  - Сираев Р.В. (<a href = "#">Github</a>)<br>
-                Разработчик 2 - Фахретдинов Р.Н. (<a href = "#">Github</a>)<br>
-                Разработчик 3 - Хасанов Р.А. (<a href = "#">Github</a>)
+                Модератор - Аюпов Т.Р. (<a href = "https://github.com/ayupovv" target="_blank">Github</a>)<br>
+                Разработчик 1  - Сираев Р.В. (<a href = "https://github.com/Saver-Igt" target="_blank">Github</a>)<br>
+                Разработчик 2 - Фахретдинов Р.Н. (<a href = "https://github.com/userRinat" target="_blank">Github</a>)<br>
+                Разработчик 3 - Хасанов Р.А. (<a href = "https://github.com/UniqueSunrise" target="_blank">Github</a>)
         	</div>
    		</div>
 	</div>
@@ -171,7 +171,11 @@
             <div class="popup_title">Настройка коэффициентов</div>
              <form class="login-form" action="settings" method="post">
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ" name="NDFL">
+                <input type="text" placeholder="НДФЛ для резидента" name="NDFL">
+                <i class="fa-solid fa-building-ngo"></i>
+            </div>
+            <div class="form-control">
+                <input type="text" placeholder="НДФЛ для не резидента" name="NDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
