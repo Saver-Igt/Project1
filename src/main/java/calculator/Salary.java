@@ -6,54 +6,16 @@ package calculator;
  * @version 1.0
  */
 public final class Salary extends Calculation{
-
-    /** Количество деталей */
-    private long amount=0;
-
-    /** Цена за деталь. */
-    private long cost=0;
-
-    /** Надбавка. */
-    private long allowance=0;
-
     /** НДФЛ */
-    private long cess;
+    private float ndfl;
 
-    /** Процент НДФЛ */
-    public static int percent=13;
-
-    /**
-     * Конструкто класса
-     *
-     * @param amount передаваемое количество
-     * @param cost передаваемаемая цена
-     * @param allowance передаемая надбавка
-     */
-    public Salary(long amount, int cost, long allowance) {
-        this.amount = amount;
-        this.cost = cost;
-        this.allowance = allowance;
+    public Salary(float ndfl) {
+        this.ndfl = ndfl;
     }
 
-    /**
-     * Метод расчитывающий зарплату до вычета налогов, НДФЛ, зарплату, которую получит сотрудник
-     *
-     * @return зарплату, которую получит сотрудник
-     */
     @Override
     public float calc() {
-        super.calcNetSalary(amount,cost,allowance);
-        Tax ndfl = new Tax(percent);
-        cess = (long) ndfl.calc();
-        return super.netSalary - cess;
+        return netSalary - ndfl;
     }
 
-    /**
-     * Метод, возвращающий вычитаемый налог
-     *
-     * @return cess вычитаемый налог
-     */
-    public final long getCess() {
-        return cess;
-    }
 }

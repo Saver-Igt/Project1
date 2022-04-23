@@ -29,16 +29,18 @@ public class Settings extends HttpServlet {
 		BD.createStatement();
 		
 		float ndfl = Float.parseFloat(request.getParameter("NDFL"));
+		float notNdfl = Float.parseFloat(request.getParameter("NoNDFL"));
 		float pf = Float.parseFloat(request.getParameter("PF"));
 		float foms = Float.parseFloat(request.getParameter("FOMS"));
 		float fss = Float.parseFloat(request.getParameter("FSS"));
 		float fssns = Float.parseFloat(request.getParameter("FSSNS"));
 		
-		BD.setPercentFromID(ndfl, 1);
-		BD.setPercentFromID(pf, 2);
-		BD.setPercentFromID(foms, 3);
-		BD.setPercentFromID(fss, 4);
-		BD.setPercentFromID(fssns, 5);
+		BD.setPercentFromName(ndfl, "NDFL");
+		BD.setPercentFromName(notNdfl, "NoNDFL");
+		BD.setPercentFromName(pf, "PF");
+		BD.setPercentFromName(foms, "FOMS");
+		BD.setPercentFromName(fss, "FSS");
+		BD.setPercentFromName(fssns, "FSSNS");
 		
 		doGet(request, response);
 	}

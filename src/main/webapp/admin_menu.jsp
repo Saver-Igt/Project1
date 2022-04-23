@@ -96,8 +96,8 @@
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
-                    <input class="rezident" name="dzen" type="radio" value="da">Резидент РФ
-                    <input class="nerezident" name="dzen" type="radio" value="net">Не резидент РФ
+                    <input class="rezident" name="dzen" type="radio" value="yes" checked="checked">Резидент РФ
+                    <input class="nerezident" name="dzen" type="radio" value="no">Не резидент РФ
             </div>
             <p>
                 <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>
@@ -175,7 +175,7 @@
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ для не резидента" name="NDFL">
+                <input type="text" placeholder="НДФЛ для не резидента" name="NoNDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">

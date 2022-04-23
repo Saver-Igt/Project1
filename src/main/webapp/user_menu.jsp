@@ -90,8 +90,8 @@
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
-                    <input class="rezident" name="dzen" type="radio" value="da">Резидент РФ
-                    <input class="nerezident" name="dzen" type="radio" value="net">Не резидент РФ
+                    <input class="rezident" name="dzen" type="radio" value="yes">Резидент РФ
+                    <input class="nerezident" name="dzen" type="radio" value="no">Не резидент РФ
             </div>
             <p>
                 <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>

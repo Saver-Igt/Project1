@@ -2,12 +2,14 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import calculator.*;
+import database.Coefficients;
 
 @WebServlet("/Calc")
 public class Calc extends HttpServlet {
@@ -19,7 +21,6 @@ public class Calc extends HttpServlet {
     	
     	request.getRequestDispatcher("/admin_menu.jsp").forward(request, response);
 	}
-//123
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -29,34 +30,47 @@ public class Calc extends HttpServlet {
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		int allowance = Integer.parseInt(request.getParameter("allowance"));
 		
-		Salary salary = new Salary(amountDetails,cost,allowance);
+		Coefficients dataBase = new Coefficients();
+		try {
+			dataBase.connectToSQL();
+			dataBase.createStatement();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
 		
-		Tax ndfl = new Tax(13);
+		//Резидент или нет
+		float percentNDFL;
+		if(request.getParameter("dzen").equals("yes")) {
+			percentNDFL = dataBase.getPercentFromName("NDFL");
+		}else {
+			percentNDFL = dataBase.getPercentFromName("NoNDFL");
+		}
+		System.out.println("Ndfl - " + percentNDFL);
+		float percentPF = dataBase.getPercentFromName("PF");
+		float percentFOMS = dataBase.getPercentFromName("FOMS");
+		float percentFSS = dataBase.getPercentFromName("FSS");
+		float percentFSSNS = dataBase.getPercentFromName("FSSNS");
 		
-		Deducation PF = new Deducation(22);
-		Deducation FOMS = new Deducation(5.1f); 
-		Deducation FSS = new Deducation(2.9f);  
-		Deducation FSSNS = new Deducation(0.2f); 
+		Calculation.calcNetSalary(amountDetails, cost, allowance);
+		Tax tax = new Tax(percentNDFL);
+		float ndfl = tax.calc();
+		Salary salary = new Salary(ndfl);
+		Deducation PF = new Deducation(percentPF);
+		Deducation FOMS = new Deducation(percentFOMS); 
+		Deducation FSS = new Deducation(percentFSS);  
+		Deducation FSSNS = new Deducation(percentFSSNS); 
 		
-		request.setAttribute("salary", getString(salary.calc(), 1));
-		request.setAttribute("NDFL", getString(ndfl.calc(), 1));
-		request.setAttribute("PF", getString(PF.calc(), 1));
-		request.setAttribute("FOMS", getString(FOMS.calc(), 1));
-		request.setAttribute("FSS", getString(FSS.calc(), 1));
-		request.setAttribute("FSSNS", getString(FSSNS.calc(), 1));
+		request.setAttribute("salary", getString(salary.calc()));
+		request.setAttribute("NDFL", getString(ndfl));
+		request.setAttribute("PF", getString(PF.calc()));
+		request.setAttribute("FOMS", getString(FOMS.calc()));
+		request.setAttribute("FSS", getString(FSS.calc()));
+		request.setAttribute("FSSNS", getString(FSSNS.calc()));
 		
 		doGet(request, response);
 	}
-	/**
-	 * Метод приводит результат к нужному формату (две цифры после запятой).
-	 *
-	 * @param value значение, полученное в ходе вычислений
-	 * @param div делитель
-	 * @return Строка с результатом
-	 */
-	public final String getString(float value, int div) {
-		float res = value / div;
-		String result = String.format("%.2f",res);
+	public final String getString(float value) {
+		String result = String.format("%.2f",value);
 		return result + " руб.";
 	}
 
