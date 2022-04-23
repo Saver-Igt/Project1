@@ -46,4 +46,7 @@ public class DataBase {
 	public Statement getStatement() {
 		return statement;
 	}
+	public Connection getConnection() {
+		return connection;
+	}
 }

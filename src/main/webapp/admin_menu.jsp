@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"
     import="database.User"
     %>
-
+<%
+// Чтобы зайти на форму - закоментить эту часть
+	if(session.getAttribute("role")!= User.ROLE.ADMIN){
+		response.sendRedirect("login.jsp");
+	}
+%>
 <style> 
 <%@include file="/css/main.css"%> 
 <%@include file="/css/popup.css"%> 
@@ -27,7 +32,7 @@
             <h1>Зарплатный калькулятор</h1>
         </div>
         <ul class="menu-bar">
-            <li class="About"><a href="#popup" class="popup-link">О калькуляторе</a></li>
+            <li class="About"><a href="http://88.99.186.187/mediawiki" target="_blank">О калькуляторе</a></li>
             <li class="Dev"><a href="#popup_2" class="popup-link">Разработчики</a></li>
         </ul>
         <div class="prava">
@@ -91,15 +96,15 @@
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
-                    <input class="rezident" name="dzen" type="radio" value="da">Резидент РФ
-                    <input class="nerezident" name="dzen" type="radio" value="net">Не резидент РФ
+                    <input class="rezident" name="dzen" type="radio" value="yes" checked="checked">Резидент РФ
+                    <input class="nerezident" name="dzen" type="radio" value="no">Не резидент РФ
             </div>
             <p>
                 <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>
             </p>
             <div class = "calcANDgen">
                 <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>
-                <button class="genPDF"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
+                <button class="genPDF" onclick = "form.action = 'CreatePDF'; form.method = 'post'"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
             </div>
         </form>
         <form class="output-form">
@@ -108,23 +113,23 @@
                  <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>НДФЛ:${NDFL}
+                <p>НДФЛ: ${NDFL}
                  <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ПФ:${PF} 
+                <p>ПФ: ${PF} 
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФОМС:${FOMS}
+                <p>ФОМС: ${FOMS}
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФСС:${FSS}
+                <p>ФСС: ${FSS}
                 <output name="result"></output></p>
             </div>
             <div class="output-control">
-                <p>ФСС НС:${FSSNS} 
+                <p>ФСС НС: ${FSSNS} 
                 <output name="result"></output></p>
             </div>
         </form>
@@ -150,10 +155,10 @@
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Команда разработчиков</div>
             <div class="popup_text">
-                Модератор - Аюпов Т.Р. (<a href = "#">Github</a>)<br>
-                Разработчик 1  - Сираев Р.В. (<a href = "#">Github</a>)<br>
-                Разработчик 2 - Фахретдинов Р.Н. (<a href = "#">Github</a>)<br>
-                Разработчик 3 - Хасанов Р.А. (<a href = "#">Github</a>)
+                Модератор - Аюпов Т.Р. (<a href = "https://github.com/ayupovv" target="_blank">Github</a>)<br>
+                Разработчик 1  - Сираев Р.В. (<a href = "https://github.com/Saver-Igt" target="_blank">Github</a>)<br>
+                Разработчик 2 - Фахретдинов Р.Н. (<a href = "https://github.com/userRinat" target="_blank">Github</a>)<br>
+                Разработчик 3 - Хасанов Р.А. (<a href = "https://github.com/UniqueSunrise" target="_blank">Github</a>)
         	</div>
    		</div>
 	</div>
@@ -164,29 +169,33 @@
         <div class="popup_content">
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Настройка коэффициентов</div>
-             <form class="login-form">
+             <form class="login-form" action="settings" method="post">
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ">
+                <input type="text" placeholder="НДФЛ для резидента" name="NDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ПФ">
+                <input type="text" placeholder="НДФЛ для не резидента" name="NoNDFL">
+                <i class="fa-solid fa-building-ngo"></i>
+            </div>
+            <div class="form-control">
+                <input type="text" placeholder="ПФ" name="PF">
                 <i class="fas fa-person-cane"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ФОМС">
+                <input type="text" placeholder="ФОМС" name="FOMS">
                 <i class="fa-solid fa-house-chimney-medical"></i>
             </div>
             <div class="form-control">
-                <input  type="text" placeholder="ФСС">
+                <input  type="text" placeholder="ФСС" name="FSS">
                 <i class="fas fa-user-plus"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="ФСС НС">
+                <input class="detailsCount" type="text" placeholder="ФСС НС" name="FSSNS">
                 <i class="fa-solid fa-lungs-virus"></i>
             </div>
             <div>
-                <button class="settings_button">Внести изменения</button>
+                <button class="settings_button" onclick = "form.action = 'settings'; form.method = 'post'">Внести изменения</button>
             </div>
         </form>
    		</div>
@@ -199,8 +208,10 @@
             <a href="#header" class="popup_close close-popup">X</a>
             <div class="popup_title">Вы точно хотите выйти ?</div>
             <div class="logout_quest">
-                <button class="logout_yes">Да</button>
+            <form>
+                <button class="logout_yes" onclick = "form.action = 'logout'; form.method = 'post'">Да</button>
                 <button class="logout_no close-popup" >Нет</button>
+            </form> 
             </div>  
    		</div>
 	</div>

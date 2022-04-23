@@ -20,7 +20,7 @@ public class User extends DataBase{
 	 * @param password пароль
 	 */
 	public void insertInBase(String login,String password) {
-		String insert = "INSERT INTO Users.dbo.Users (login,password,Role) VALUES ('"+
+		String insert = "INSERT INTO Project1.dbo.Users (login,password,Role) VALUES ('"+
 				login + "', '" + password + "', 'USER')";
 		try {
 			statement.executeUpdate(insert);
@@ -40,7 +40,7 @@ public class User extends DataBase{
 	 * @param id ID, по которому происходит изменение
 	 */
 	public void updateData(String login,String password, String userClass,int id) {
-		String sqlCommand = "UPDATE Users.dbo.Users SET login = '" + login +"',"
+		String sqlCommand = "UPDATE Project1.dbo.Users SET login = '" + login +"',"
 				+ "password ='"+ password+"',"
 				+ "Role = '" + userClass+ "' WHERE ID = " + Integer.toString(id);
 		try {
@@ -58,7 +58,7 @@ public class User extends DataBase{
 	 * @param id ID пользователя
 	 */
 	public void deleteUser(int id) {
-		String sqlCommand = "DELETE FROM Users.dbo.Users WHERE ID = " + Integer.toString(id);
+		String sqlCommand = "DELETE FROM Project1.dbo.Users WHERE ID = " + Integer.toString(id);
 		try {
 			statement.executeUpdate(sqlCommand);
 			System.out.println("User with id = " + id + " deleted.");
@@ -76,7 +76,7 @@ public class User extends DataBase{
 	 */
 	public boolean checkForUniqueLogin(String login) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2))) {
                 	return true;
@@ -97,7 +97,7 @@ public class User extends DataBase{
 	 */
 	public int getID(String login) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2))) {
                 	return resultSet.getInt(1);
@@ -119,7 +119,7 @@ public class User extends DataBase{
 	 */
 	public boolean userIsExist(String login,String password) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2)) && password.equals(resultSet.getString(3))) {
                 	return true;
@@ -132,7 +132,7 @@ public class User extends DataBase{
 	}
 	public void setRoleFromLoginPassword(String login,String password) {
 		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Users.dbo.Users");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
                 if(login.equals(resultSet.getString(2)) && password.equals(resultSet.getString(3))) {
                 	setRoleFromString(resultSet.getString(4));
@@ -164,7 +164,7 @@ public class User extends DataBase{
     public void setRoleFromID(int id) {
     	ResultSet resultSet;
 		try {
-			resultSet = statement.executeQuery("SELECT Role FROM Users.dbo.Users Where ID = " + id);
+			resultSet = statement.executeQuery("SELECT Role FROM Project1.dbo.Users Where ID = " + id);
 			while(resultSet.next()){
 				setRoleFromString(resultSet.getString(1));
 			}
