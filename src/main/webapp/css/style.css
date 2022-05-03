@@ -27,6 +27,20 @@ section {
     max-width: 60%;
 }
 
+.popup_content {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.logoSuccess {
+	position:relative;
+	left: 50px;
+	margin-right: 150px;
+}
+
+
 .login-container {
     max-width: 450px;
     padding: 24px;

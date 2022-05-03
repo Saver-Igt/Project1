@@ -45,8 +45,10 @@
                 </div>
 
                 <button class="submitRegister">Зарегистрироваться</button>
+               
             </form>
         </div>
     </section>
+  
 </body>
 </html>

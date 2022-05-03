@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/popup.css">
+    <link rel="stylesheet" href="./css/popupSuccess.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -48,9 +48,30 @@
                 </div>
 
                 <button class="submit" class="popup-link">Войти</button>
+                <%
+                if(request.getAttribute("success")!=null){
+                    out.print("<script>"+
+                              "window.onload = function() {"+
+                              "popupOpen(popup);" +
+                              "}"+
+                              "</script>");
+                }
+                %>
             </form>
         </div>
     </section>
+<div id="popup" class="popup">
+<div class="popup_body">
+    <div class="popup_content">
+        <a href="#header" class="popup_close close-popup">X</a>
+        <div class="popup_title">Успешно</div>
+        <div class="logoSuccess">
+      		 <img src="./images/checked.png" width="100" height="100" alt="">
+        </div>
+        </div>
+    </div>
+</div>
+            
 </body>
 <script src="js/popups.js" type="text/javascript"></script>
 </html>
