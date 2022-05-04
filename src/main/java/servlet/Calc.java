@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import calculator.*;
 import database.Coefficients;
+import database.User;
 
 @WebServlet("/Calc")
 public class Calc extends HttpServlet {
@@ -18,7 +19,10 @@ public class Calc extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=utf-8");	
-    	
+    	Object role = request.getSession().getAttribute("role");
+    	if(role == User.ROLE.USER){
+    		request.getRequestDispatcher("/user_menu.jsp").forward(request, response);
+    	} else if(role == User.ROLE.ADMIN)
     	request.getRequestDispatcher("/admin_menu.jsp").forward(request, response);
 	}
 	

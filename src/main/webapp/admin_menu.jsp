@@ -36,7 +36,7 @@
             <li class="Dev"><a href="#popup_2" class="popup-link">Разработчики</a></li>
         </ul>
         <div class="prava">
-            <h3>Права досупа: Администратор</h3>
+            <h3>Права доступа: Администратор</h3>
         </div>
         <div class="btns">
         <a href="#popup_3" class= "popup-link">
