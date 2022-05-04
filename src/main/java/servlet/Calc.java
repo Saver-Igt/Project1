@@ -64,7 +64,6 @@ public class Calc extends HttpServlet {
 		}else {
 			percentNDFL = dataBase.getPercentFromName("NoNDFL");
 		}
-		System.out.println("Ndfl - " + percentNDFL);
 		float percentPF = dataBase.getPercentFromName("PF");
 		float percentFOMS = dataBase.getPercentFromName("FOMS");
 		float percentFSS = dataBase.getPercentFromName("FSS");
@@ -80,7 +79,7 @@ public class Calc extends HttpServlet {
 		Deducation FSSNS = new Deducation(percentFSSNS); 
 		
 		request.getSession().setAttribute("salary", getString(salary.calc()));
-		request.getSession().setAttribute("NDFl", getString(ndfl));
+		request.getSession().setAttribute("NDFL", getString(ndfl));
 		request.getSession().setAttribute("PF", getString(PF.calc()));
 		request.getSession().setAttribute("FOMS", getString(FOMS.calc()));
 		request.getSession().setAttribute("FSS", getString(FSS.calc()));
