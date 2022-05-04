@@ -36,7 +36,7 @@ public class CreatePDF extends HttpServlet {
 		String date = "Расчетный лист за " + request.getParameter("date");
 		
 		String sumSotr = (String) request.getSession().getAttribute("salary");
-		String NDFl = (String) request.getSession().getAttribute("NDFl") ;
+		String NDFl = (String) request.getSession().getAttribute("NDFL") ;
 		String PF = (String) request.getSession().getAttribute("PF");
 		String FOMS = (String) request.getSession().getAttribute("FOMS");
 		String FSS = (String) request.getSession().getAttribute("FSS");
