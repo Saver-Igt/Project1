@@ -33,7 +33,22 @@ public class Calc extends HttpServlet {
 		int amountDetails = Integer.parseInt(request.getParameter("amountDetails"));
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		int allowance = Integer.parseInt(request.getParameter("allowance"));
-		
+	    String nameOrg = request.getParameter("nameOrg");
+	    String date = request.getParameter("date");
+	    String fio = request.getParameter("FIO");
+	    String podrazdelenie = request.getParameter("podrazdelenie");
+	    String doljnost = request.getParameter("doljnost");
+
+	    request.getSession().setAttribute("nameOrg", nameOrg);
+	    request.getSession().setAttribute("date", date);
+	    request.getSession().setAttribute("FIO", fio);
+	    request.getSession().setAttribute("podrazdelenie", podrazdelenie);
+	    request.getSession().setAttribute("doljnost", doljnost);
+	    request.getSession().setAttribute("amountDetails", amountDetails);
+	    request.getSession().setAttribute("cost", cost);
+	    request.getSession().setAttribute("allowance", allowance);
+
+
 		Coefficients dataBase = new Coefficients();
 		try {
 			dataBase.connectToSQL();
@@ -64,12 +79,12 @@ public class Calc extends HttpServlet {
 		Deducation FSS = new Deducation(percentFSS);  
 		Deducation FSSNS = new Deducation(percentFSSNS); 
 		
-		request.setAttribute("salary", getString(salary.calc()));
-		request.setAttribute("NDFL", getString(ndfl));
-		request.setAttribute("PF", getString(PF.calc()));
-		request.setAttribute("FOMS", getString(FOMS.calc()));
-		request.setAttribute("FSS", getString(FSS.calc()));
-		request.setAttribute("FSSNS", getString(FSSNS.calc()));
+		request.getSession().setAttribute("salary", getString(salary.calc()));
+		request.getSession().setAttribute("NDFl", getString(ndfl));
+		request.getSession().setAttribute("PF", getString(PF.calc()));
+		request.getSession().setAttribute("FOMS", getString(FOMS.calc()));
+		request.getSession().setAttribute("FSS", getString(FSS.calc()));
+		request.getSession().setAttribute("FSSNS", getString(FSSNS.calc()));
 		
 		doGet(request, response);
 	}
