@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
@@ -9,158 +8,83 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileOutputStream;
+
 import java.io.File;
-import java.net.MalformedURLException;
-import java.util.stream.Stream;
-
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-
+import PDF.*;
 
 @SuppressWarnings("serial")
 @WebServlet("/CreatePDF")
 public class CreatePDF extends HttpServlet {
-private String filePath;
-private String absPath;
-private String imagePath;
-private String fontPath;
-private BaseFont times = null;
-protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-request.getRequestDispatcher("/FirstPdf.pdf").forward(request, response);
-}
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
-
-String nameOrg = request.getParameter("nameOrg");
-String date = request.getParameter("date");
-String fio = request.getParameter("FIO");
-String podrazdelenie = request.getParameter("podrazdelenie");
-String doljnost = request.getParameter("doljnost");
-String cost = request.getParameter("cost");
-String amountDetails = request.getParameter("amountDetails");
-String allowance = request.getParameter("allowance");
-getFilePath();
-Document document = new Document();
-try {
-PdfWriter.getInstance(document, new FileOutputStream(filePath));
-document.open();
-} catch (Exception e) {
-e.printStackTrace();
-}
-try {
-times = BaseFont.createFont(fontPath, "cp1251", BaseFont.EMBEDDED);
-} catch (DocumentException | IOException e) {
-e.printStackTrace();
-}
-/* Первая строка */
-Paragraph paragraph = new Paragraph();
-paragraph.add(new Paragraph(nameOrg, new Font(times,18)));
-/* Вторая строка */
-String string_pdf2 = "Расчетный лист за " + date;
-paragraph.add(new Paragraph(string_pdf2, new Font(times,16)));
-/* Третья строка */
-String string_pdf3 = "ФИО: " + fio;
-paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
-/* Четвертая строка */
-String string_pdf4 = "Подразделение: " + podrazdelenie;
-paragraph.add(new Paragraph(string_pdf4, new Font(times,14)));
-/* Пятая строка */
-String string_pdf5 = "Должность: " + doljnost;
-paragraph.add(new Paragraph(string_pdf5, new Font(times,14)));
-/* Шестая строка */
-String string_pdf6 = "Ставка: " + cost;
-paragraph.add(new Paragraph(string_pdf6, new Font(times,14)));
-/* Седьмая строка */
-String string_pdf7 = "Количество деталей: " + amountDetails;
-paragraph.add(new Paragraph(string_pdf7, new Font(times,14)));
-/* Пустая строка перед таблицей */
-paragraph.add(" ");
-
-try {
-document.add(paragraph);
-} catch (DocumentException e1) {
-e1.printStackTrace();
-}
-paragraph.clear();
-/* Картинка */
-Image img = null;
-try {
-img = Image.getInstance(imagePath);
-} catch (BadElementException e2) {
-e2.printStackTrace();
-} catch (MalformedURLException e2) {
-e2.printStackTrace();
-} catch (IOException e2) {
-e2.printStackTrace();
-}
-img.setAbsolutePosition(500, 740);
-
-try {
-document.add(img);
-} catch (DocumentException e) {
-e.printStackTrace();
-}
-paragraph.clear();
-
-try {
-document.add(paragraph);
-} catch (DocumentException e1) {
-e1.printStackTrace();
-}
-
-PdfPTable table = new PdfPTable(4);
-addHeader(table);
-addRows(table, "Надбавка ", date, allowance, "-");
-try {
-document.add(table);
-} catch (DocumentException e) {
-e.printStackTrace();
-}
-document.close();
-doGet(request,response);
-}
-private void addRows(PdfPTable table, String cell1, String cell2, String cell3, String cell4) {
-
-table.addCell((new Phrase(cell1, new Font(times,14))));
-table.addCell((new Phrase(cell2, new Font(times,14))));
-table.addCell((new Phrase(cell3, new Font(times,14))));
-table.addCell((new Phrase(cell4, new Font(times,14))));
-
-
-}
-private void addHeader(PdfPTable table) {
-Stream.of("Начислено / Удержано", "За период", "Начислено", "Удержано")
-.forEach(columnTitle -> {
-PdfPCell header = new
-
-    PdfPCell();
-    header.setBackgroundColor(BaseColor.LIGHT_GRAY);
-    header.setBorderWidth(2);
-    header.setPhrase(new Phrase(columnTitle, new Font(times,14)));
-    table.addCell(header);
-    });
+	private String absPath;
+	private String filePath;
+	private String imagePath;
+	private String fontPath;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		request.getRequestDispatcher("/Расчетный_лист.pdf").forward(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String nameOrg = request.getParameter("nameOrg");
+		String fio = "ФИО: "+request.getParameter("FIO");
+		String podrazdelenie = "Подразделение: "+request.getParameter("podrazdelenie");
+		String doljnost = "Должность: "+request.getParameter("doljnost");
+		String cost = "Ставка: "+request.getParameter("cost") + " рублей за деталь";
+		String amountDetails = "Количество деталей: " +request.getParameter("amountDetails") + " шт.";
+		String allowance = request.getParameter("allowance") + " руб.";
+		String date = "Расчетный лист за "+(String) request.getSession().getAttribute("date");
+		
+		String sumSotr = (String) request.getSession().getAttribute("salary");
+		String NDFl = (String) request.getSession().getAttribute("NDFl") ;
+		String PF = (String) request.getSession().getAttribute("PF");
+		String FOMS = (String) request.getSession().getAttribute("FOMS");
+		String FSS = (String) request.getSession().getAttribute("FSS");
+		String FSSNS = (String) request.getSession().getAttribute("FSSNS");
+		
+		setPaths();
+		PDF pdf = new PDF();
+		pdf.create(filePath, fontPath);
+		pdf.createParagraph();
+		
+		pdf.createString(" ", 14);
+		pdf.createString(nameOrg, 18);
+		pdf.createString(date, 16);
+		pdf.createString(fio, 14);
+		pdf.createString(podrazdelenie, 14);
+		pdf.createString(doljnost, 14);
+		pdf.createString(cost, 14);
+		pdf.createString(amountDetails, 14);
+		pdf.createString(" ", 14);
+		
+		pdf.addImage(imagePath);
+		
+		pdf.createTable(4);
+		pdf.addHeader();
+		pdf.addRows("Надбавка", getDate(request.getParameter("date")), allowance, "-");
+		pdf.addRows("НДФЛ", getDate(request.getParameter("date")), "-", NDFl);
+		pdf.addRows("ПФ", getDate(request.getParameter("date")), "-", PF);
+		pdf.addRows("ФОМС", getDate(request.getParameter("date")), "-", FOMS);
+		pdf.addRows("ФСС", getDate(request.getParameter("date")), "-", FSS);
+		pdf.addRows("ФСС НС", getDate(request.getParameter("date")), "-", FSSNS);
+		pdf.addRows("Сумма сотруднику", getDate(request.getParameter("date")), sumSotr, "-");
+		pdf.addTableToDoc();
+		
+		pdf.getPDoc().close();
+		doGet(request, response);
+	}
+	public String getDate(String date) {
+        String[] words = date.split("-");
+        return words[1] +"."+ words[2];
+	}
+    public void setPaths() {
+    	ServletContext context = getServletContext();
+ 	    absPath = context.getRealPath("/");
+ 	    String separator = File.separator;
+	    filePath = absPath +"Расчетный_лист.pdf";
+	    imagePath = absPath +"images"+separator+"ugatu.png";
+	    fontPath = absPath +"fonts"+separator+"times.ttf";
     }
-    public void getFilePath() throws IOException{
-    ServletContext context = getServletContext();
-    absPath = context.getRealPath("/");
-    String separator = File.separator;
+}
 
-    filePath = absPath +"FirstPdf.pdf";
-    imagePath = absPath +"images"+separator+"ugatu.png";
-    fontPath = absPath +"fonts"+separator+"times.ttf";
-
-    }
-    }
 
