@@ -123,12 +123,6 @@ e1.printStackTrace();
 PdfPTable table = new PdfPTable(4);
 addHeader(table);
 addRows(table, "Надбавка ", date, allowance, "-");
-addRows(table, "НДФЛ", date, "-", );
-addRows(table);
-addRows(table);
-addRows(table);
-addRows(table);
-addRows(table);
 try {
 document.add(table);
 } catch (DocumentException e) {
