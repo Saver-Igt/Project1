@@ -3,6 +3,7 @@ package database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * Класс для управления базой данных пользователей.
@@ -20,8 +21,9 @@ public class User extends DataBase{
 	 * @param password пароль
 	 */
 	public void insertInBase(String login,String password) {
+		String md5Hex = DigestUtils.md5Hex(password);
 		String insert = "INSERT INTO Project1.dbo.Users (login,password,Role) VALUES ('"+
-				login + "', '" + password + "', 'USER')";
+				login + "', '" + md5Hex + "', 'USER')";
 		try {
 			statement.executeUpdate(insert);
 			System.out.println("Data inserted");
@@ -118,10 +120,11 @@ public class User extends DataBase{
 	 * @return true, если авторизация прошла успешно
 	 */
 	public boolean userIsExist(String login,String password) {
+		String md5Hex = DigestUtils.md5Hex(password);
 		try {
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
-                if(login.equals(resultSet.getString(2)) && password.equals(resultSet.getString(3))) {
+                if(login.equals(resultSet.getString(2)) && md5Hex.equals(resultSet.getString(3))) {
                 	return true;
                 }          
             }

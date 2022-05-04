@@ -34,7 +34,7 @@ public class Registration extends HttpServlet {
         user.createStatement();
 
         if(!user.checkForUniqueLogin(login)) {
-        //    user.insertInBase(login, password);
+            user.insertInBase(login, password);
             request.setAttribute("success", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
