@@ -3,36 +3,7 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
-  <servlet>
-    <servlet-name>SignIn</servlet-name>
-    <servlet-class>servlet.SignIn</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>Calc</servlet-name>
-    <servlet-class>servlet.Calc</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Registration</servlet-name>
-    <servlet-class>servlet.Registration</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>logout</servlet-name>
-    <servlet-class>servlet.logout</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>CreatePDF</servlet-name>
-    <servlet-class>servlet.CreatePDF</servlet-class>
-  </servlet>
-  
-  <servlet>
-    <servlet-name>Settings</servlet-name>
-    <servlet-class>servlet.Settings</servlet-class>
-  </servlet>
-  
+
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/TestDB</res-ref-name>
