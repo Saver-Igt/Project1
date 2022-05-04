@@ -23,7 +23,7 @@ public class PDF {
 	private Document document;
 	private Paragraph paragraph;
 	private PdfPTable table;
-	public void create(String filePath, String fontPath) {
+	public void create(String filePath) {
 		document = new Document();
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream(filePath));
@@ -31,6 +31,8 @@ public class PDF {
 		} catch (Exception e) {
 			e.printStackTrace();
 			}
+	}
+	public void createBaseFont(String fontPath) {
 		try {
 			times = BaseFont.createFont(fontPath, "cp1251", BaseFont.EMBEDDED);
 		} catch (DocumentException | IOException e) {

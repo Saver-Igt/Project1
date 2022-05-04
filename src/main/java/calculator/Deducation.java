@@ -29,7 +29,7 @@ public final class Deducation extends Calculation{
     */
     @Override
     public float calc() {
-        return super.netSalary*percent/constant;
+        return netSalary*percent/constant;
     }
 
 }

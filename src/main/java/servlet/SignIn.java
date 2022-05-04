@@ -2,9 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.User;
 
+@SuppressWarnings("serial")
 @WebServlet("/welcome")
 public class SignIn extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -44,15 +44,18 @@ public class SignIn extends HttpServlet {
 		} 
     	request.getSession().setAttribute("role", user.getRole());
     	redirect(request, response);
-    	
+    	// Закрытие подключения к БД
+        try {
+            user.getStatement().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 	public void redirect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("role") == User.ROLE.USER) {
 			response.sendRedirect("user_menu.jsp");
-			//request.getRequestDispatcher("/user_menu.jsp").forward(request, response);
 		}else if(request.getSession().getAttribute("role") == User.ROLE.ADMIN) {
-			response.sendRedirect("admin_menu.jsp");
-			//request.getRequestDispatcher("/admin_menu.jsp").forward(request, response);
+			response.sendRedirect("admin_menu.jsp");	
 		}else {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}

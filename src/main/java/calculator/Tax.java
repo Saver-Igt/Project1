@@ -28,6 +28,6 @@ public final class Tax extends Calculation{
      */
     @Override
     public float calc() {
-        return super.netSalary * percent /100;
+        return netSalary * percent /100;
     }
 }

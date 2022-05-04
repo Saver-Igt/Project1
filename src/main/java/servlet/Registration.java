@@ -1,11 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.User;
+@SuppressWarnings("serial")
 @WebServlet("/registretion")
 public class Registration extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
@@ -38,7 +36,6 @@ public class Registration extends HttpServlet {
             request.setAttribute("success", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
-
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         }
 

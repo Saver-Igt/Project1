@@ -44,7 +44,8 @@ public class CreatePDF extends HttpServlet {
 		
 		setPaths();
 		PDF pdf = new PDF();
-		pdf.create(filePath, fontPath);
+		pdf.create(filePath);
+		pdf.createBaseFont(fontPath);
 		pdf.createParagraph();
 		
 		pdf.createString(" ", 14);

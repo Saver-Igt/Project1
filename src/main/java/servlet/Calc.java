@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import calculator.*;
 import database.Coefficients;
 import database.User;
-
+@SuppressWarnings("serial")
 @WebServlet("/Calc")
 public class Calc extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=utf-8");	
@@ -47,7 +45,6 @@ public class Calc extends HttpServlet {
 	    request.getSession().setAttribute("amountDetails", amountDetails);
 	    request.getSession().setAttribute("cost", cost);
 	    request.getSession().setAttribute("allowance", allowance);
-
 
 		Coefficients dataBase = new Coefficients();
 		try {

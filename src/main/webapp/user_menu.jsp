@@ -62,31 +62,31 @@
     <div class="container">
         <form class="login-form" method = "post" action = "Calc">
             <div class="form-control">
-                <input type="text" placeholder="Название организации">
+                <input type="text" name="nameOrg" placeholder="Название организации" value=${nameOrg}>
                 <i class="fa-solid fa-building"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="Подразделение">
+                <input type="text" name="podrazdelenie" placeholder="Подразделение" value=${podrazdelenie}>
                 <i class="fas fa-people-roof"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="Должность">
+                <input type="text" name="doljnost" placeholder="Должность" value=${doljnost}>
                 <i class="fas fa-clipboard-user"></i>
             </div>
             <div class="form-control">
-                <input  type="text" placeholder="Ф.И.О.">
+                <input  type="text" name="FIO" placeholder="Ф.И.О." value=${podrazdelenie}>
                 <i class="fas fa-user"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="Количество деталей" name="amountDetails">
+                <input class="detailsCount" type="text" placeholder="Количество деталей" name="amountDetails" value=${amountDetails}>
                 <i class="fa-solid fa-cubes-stacked"></i>
             </div>
             <div class="form-control">
-                <input class="detailPrice" type="text" placeholder="Ставка детали" name="cost">
+                <input class="detailPrice" type="text" placeholder="Ставка детали" name="cost" value=${cost}>
                 <i class="fa-solid fa-coins"></i>
             </div>
             <div class="form-control">
-                <input class="penny" type="text" placeholder="Надбавка" name="allowance">
+                <input class="penny" type="text" placeholder="Надбавка" name="allowance" value=${allowance}>
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
@@ -94,14 +94,14 @@
                     <input class="nerezident" name="dzen" type="radio" value="no" value=${dzen}>Не резидент РФ
             </div>
             <p>
-                <input class="date" type="date" id="localdate" name="date" placeholder="Время"/>
+                <input class="date" type="date" id="localdate" name="date" placeholder="Время" value=${date}/>
             </p>
             <div class = "calcANDgen">
                 <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>
                 <button class="genPDF" onclick = "form.action = 'CreatePDF'; form.method = 'post'"><i class="fa-solid fa-file-pdf"></i>Сгенерировать PDF</button>
             </div>
         </form>
-        <form class="output-form">
+         <form class="output-form">
             <div class="output-control">
                 <p class="sumSotr">Сумма сотруднику:${salary}
                  <output name="result"></output></p>

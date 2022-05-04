@@ -8,15 +8,17 @@ import org.apache.commons.codec.digest.DigestUtils;
 /**
  * Класс для управления базой данных пользователей.
  * @author Siraev
- * @version 1.1
+ * @version 2.0
  */
 public class User extends DataBase{
+	
+	/** Родь по умолчанию. */
 	private ROLE role = User.ROLE.UNKNOWN;
 	
 	/**
 	 * Метод, добавляющий нового пользователя.
 	 * По умолчанию добавляет простого пользователя.
-	 * @param statement объект, выполняющий команды SQL
+	 *
 	 * @param login логин нового пользователя
 	 * @param password пароль
 	 */
@@ -31,48 +33,10 @@ public class User extends DataBase{
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * Метод, изменяющий данные пользователя.
-	 *
-	 * @param statement объект, выполняющий команды SQL
-	 * @param login новый логин
-	 * @param password новый парволь
-	 * @param userClass новый класс пользователя(для админа)
-	 * @param id ID, по которому происходит изменение
-	 */
-	public void updateData(String login,String password, String userClass,int id) {
-		String sqlCommand = "UPDATE Project1.dbo.Users SET login = '" + login +"',"
-				+ "password ='"+ password+"',"
-				+ "Role = '" + userClass+ "' WHERE ID = " + Integer.toString(id);
-		try {
-			statement.executeUpdate(sqlCommand);
-			System.out.println("Data updated");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Метод удаляет пользователя по ID.
-	 *
-	 * @param statement объект, выполняющий команды SQL
-	 * @param id ID пользователя
-	 */
-	public void deleteUser(int id) {
-		String sqlCommand = "DELETE FROM Project1.dbo.Users WHERE ID = " + Integer.toString(id);
-		try {
-			statement.executeUpdate(sqlCommand);
-			System.out.println("User with id = " + id + " deleted.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	/**
 	 * Метод, проверяющий уникальность логина.
 	 *
-	 * @param statement объект, выполняющий команды SQL
 	 * @param login логин для проверки
 	 * @return true, если логин уже есть в базе
 	 */
@@ -93,7 +57,6 @@ public class User extends DataBase{
 	/**
 	 * Метод для получения ID по логину.
 	 *
-	 * @param statement объект, выполняющий команды SQL
 	 * @param login логин
 	 * @return ID пользователя
 	 */
@@ -114,7 +77,6 @@ public class User extends DataBase{
 	/**
 	 * Метод для авторизации пользователя.
 	 *
-	 * @param statement объект, выполняющий команды SQL
 	 * @param login логин на проверку
 	 * @param password пароль на проверку
 	 * @return true, если авторизация прошла успешно
@@ -133,6 +95,13 @@ public class User extends DataBase{
 		}
 		return false;
 	}
+	
+	/**
+	 * Получение роли по логину и паролю.
+	 *
+	 * @param login
+	 * @param password
+	 */
 	public void setRoleFromLoginPassword(String login,String password) {
 		try {
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
@@ -145,16 +114,42 @@ public class User extends DataBase{
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Enum со всеми возможными ролями.
+	 */
 	public enum ROLE {
-        USER, ADMIN, UNKNOWN
+        /** обычный пользователь. */
+        USER, 
+		/** Суперпользователь. */
+		ADMIN, 
+		/** Не авторезированный пользователь. */
+		UNKNOWN
     }
+	
+	/**
+	 * Геттер для роли.
+	 *
+	 * @return the role
+	 */
 	public ROLE getRole() {
         return role;
     }
 
+    /**
+     * Сеттер для роли
+     *
+     * @param role the new role
+     */
     public void setRole(ROLE role) {
         this.role = role;
     }
+    
+    /**
+     * Преобразование строки в роль.
+     *
+     * @param str строка с ролью
+     */
     public void setRoleFromString(String str) {
     	if(str.equals("ADMIN")) {
     		role = ROLE.ADMIN;
@@ -164,6 +159,12 @@ public class User extends DataBase{
     		this.role = ROLE.UNKNOWN;
     	}
     }
+    
+    /**
+     * Задание роли по ID
+     *
+     * @param id
+     */
     public void setRoleFromID(int id) {
     	ResultSet resultSet;
 		try {
