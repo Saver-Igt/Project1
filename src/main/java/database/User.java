@@ -21,7 +21,7 @@ public class User extends DataBase{
 	 * @param password пароль
 	 */
 	public void insertInBase(String login,String password) {
-		String md5Hex = DigestUtils.md5Hex(password);
+		String md5Hex = DigestUtils.md5Hex("salt" + password);
 		String insert = "INSERT INTO Project1.dbo.Users (login,password,Role) VALUES ('"+
 				login + "', '" + md5Hex + "', 'USER')";
 		try {
@@ -120,7 +120,7 @@ public class User extends DataBase{
 	 * @return true, если авторизация прошла успешно
 	 */
 	public boolean userIsExist(String login,String password) {
-		String md5Hex = DigestUtils.md5Hex(password);
+		String md5Hex = DigestUtils.md5Hex("salt" + password);
 		try {
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
 			while(resultSet.next()){
