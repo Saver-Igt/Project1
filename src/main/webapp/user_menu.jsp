@@ -74,7 +74,7 @@
                 <i class="fas fa-clipboard-user"></i>
             </div>
             <div class="form-control">
-                <input  type="text" name="FIO" placeholder="Ф.И.О." value=${podrazdelenie}>
+                <input  type="text" name="FIO" placeholder="Ф.И.О." value=${FIO}>
                 <i class="fas fa-user"></i>
             </div>
             <div class="form-control">
