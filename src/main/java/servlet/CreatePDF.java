@@ -33,7 +33,7 @@ public class CreatePDF extends HttpServlet {
 		String cost = "Ставка: "+request.getParameter("cost") + " рублей за деталь";
 		String amountDetails = "Количество деталей: " +request.getParameter("amountDetails") + " шт.";
 		String allowance = request.getParameter("allowance") + " руб.";
-		String date = "Расчетный лист за "+(String) request.getSession().getAttribute("date");
+		String date = "Расчетный лист за " + request.getParameter("date");
 		
 		String sumSotr = (String) request.getSession().getAttribute("salary");
 		String NDFl = (String) request.getSession().getAttribute("NDFl") ;
