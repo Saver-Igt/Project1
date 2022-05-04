@@ -45,6 +45,12 @@ request.setCharacterEncoding("UTF-8");
 
 String nameOrg = request.getParameter("nameOrg");
 String date = request.getParameter("date");
+String fio = request.getParameter("FIO");
+String podrazdelenie = request.getParameter("podrazdelenie");
+String doljnost = request.getParameter("doljnost");
+String cost = request.getParameter("cost");
+String amountDetails = request.getParameter("amountDetails");
+String allowance = request.getParameter("allowance");
 getFilePath();
 Document document = new Document();
 try {
@@ -63,10 +69,22 @@ Paragraph paragraph = new Paragraph();
 paragraph.add(new Paragraph(nameOrg, new Font(times,18)));
 /* Вторая строка */
 String string_pdf2 = "Расчетный лист за " + date;
-paragraph.add(new Paragraph(string_pdf2, new Font(times,14)));
+paragraph.add(new Paragraph(string_pdf2, new Font(times,16)));
 /* Третья строка */
-String string_pdf3 = "Расчетный лист за " + date;
+String string_pdf3 = "ФИО: " + fio;
 paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
+/* Четвертая строка */
+String string_pdf4 = "Подразделение: " + podrazdelenie;
+paragraph.add(new Paragraph(string_pdf4, new Font(times,14)));
+/* Пятая строка */
+String string_pdf5 = "Должность: " + doljnost;
+paragraph.add(new Paragraph(string_pdf5, new Font(times,14)));
+/* Шестая строка */
+String string_pdf6 = "Ставка: " + cost;
+paragraph.add(new Paragraph(string_pdf6, new Font(times,14)));
+/* Седьмая строка */
+String string_pdf7 = "Количество деталей: " + amountDetails;
+paragraph.add(new Paragraph(string_pdf7, new Font(times,14)));
 /* Пустая строка перед таблицей */
 paragraph.add(" ");
 
@@ -104,8 +122,8 @@ e1.printStackTrace();
 
 PdfPTable table = new PdfPTable(4);
 addHeader(table);
-addRows(table);
-addRows(table);
+addRows(table, "Надбавка ", date, allowance, "-");
+addRows(table, "НДФЛ", date, "-", );
 addRows(table);
 addRows(table);
 addRows(table);
@@ -119,16 +137,14 @@ e.printStackTrace();
 document.close();
 doGet(request,response);
 }
-private void addRows(PdfPTable table) {
-String cell1 = "Начислено / Удержано";
-String cell2 = "За период";
-String cell3 = "Начислено";
-String cell4 = "Удержано";
+private void addRows(PdfPTable table, String cell1, String cell2, String cell3, String cell4) {
 
 table.addCell((new Phrase(cell1, new Font(times,14))));
 table.addCell((new Phrase(cell2, new Font(times,14))));
 table.addCell((new Phrase(cell3, new Font(times,14))));
 table.addCell((new Phrase(cell4, new Font(times,14))));
+
+
 }
 private void addHeader(PdfPTable table) {
 Stream.of("Начислено / Удержано", "За период", "Начислено", "Удержано")
