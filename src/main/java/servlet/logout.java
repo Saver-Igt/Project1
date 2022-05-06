@@ -17,7 +17,6 @@ public class logout extends HttpServlet {
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -29,8 +30,8 @@ public class Calc extends HttpServlet {
     	response.setContentType("text/html;charset=utf-8");	
     	
 		int amountDetails = Integer.parseInt(request.getParameter("amountDetails"));
-		int cost = Integer.parseInt(request.getParameter("cost"));
-		int allowance = Integer.parseInt(request.getParameter("allowance"));
+		float cost = Float.parseFloat(request.getParameter("cost"));
+		float allowance = Float.parseFloat(request.getParameter("allowance"));
 	    String nameOrg = request.getParameter("nameOrg");
 	    String date = request.getParameter("date");
 	    String fio = request.getParameter("FIO");
@@ -82,6 +83,13 @@ public class Calc extends HttpServlet {
 		request.getSession().setAttribute("FSS", getString(FSS.calc()));
 		request.getSession().setAttribute("FSSNS", getString(FSSNS.calc()));
 		
+		// Закрытие подключения к БД
+        try {
+        	dataBase.getStatement().close();
+        	dataBase.getConnection().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 		doGet(request, response);
 	}
 	public final String getString(float value) {

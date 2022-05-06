@@ -23,7 +23,7 @@ public abstract class Calculation {
 	 * @param cost цена одной детали
 	 * @param allowance надбавка
 	 */
-	public final static void calcNetSalary(long amount, long cost, long allowance) {
+	public final static void calcNetSalary(long amount, float cost, float allowance) {
 		netSalary = amount * cost + allowance;
 	}
 }

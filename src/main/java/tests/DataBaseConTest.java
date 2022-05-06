@@ -2,8 +2,11 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import javax.naming.NamingException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,5 +23,8 @@ public class DataBaseConTest {
 		BD.connect();
 		assertNotNull(BD.getConnection());
 	}
-
+	@After
+	public void tearDown() throws SQLException {
+		BD.getConnection().close();
+	}
 }

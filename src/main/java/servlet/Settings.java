@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -42,6 +43,14 @@ public class Settings extends HttpServlet {
 		BD.setPercentFromName(fss, "FSS");
 		BD.setPercentFromName(fssns, "FSSNS");
 		
+		// Закрытие подключения к БД
+        try {
+        	BD.getStatement().close();
+        	BD.getConnection().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
 		doGet(request, response);
 	}
 

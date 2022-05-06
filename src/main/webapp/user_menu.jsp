@@ -78,15 +78,15 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="Количество деталей" name="amountDetails" value=${amountDetails}>
+                <input class="detailsCount" type="text" placeholder="Количество деталей" required name="amountDetails" value=${amountDetails}>
                 <i class="fa-solid fa-cubes-stacked"></i>
             </div>
             <div class="form-control">
-                <input class="detailPrice" type="text" placeholder="Ставка детали" name="cost" value=${cost}>
+                <input class="detailPrice" type="text" placeholder="Ставка детали" required name="cost" value=${cost}>
                 <i class="fa-solid fa-coins"></i>
             </div>
             <div class="form-control">
-                <input class="penny" type="text" placeholder="Надбавка" name="allowance" value=${allowance}>
+                <input class="penny" type="text" placeholder="Надбавка" required name="allowance" value=${allowance}>
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
@@ -94,7 +94,7 @@
                     <input class="nerezident" name="dzen" type="radio" value="no" value=${dzen}>Не резидент РФ
             </div>
             <p>
-                <input class="date" type="date" id="localdate" name="date" placeholder="Время" value=${date}/>
+                <input class="date" type="date" required id="localdate" name="date" placeholder="Время" value=${date}/>
             </p>
             <div class = "calcANDgen">
                 <button class="calc" onclick = "form.action = 'Calc'; form.method = 'post'">Расчет</button>

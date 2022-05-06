@@ -84,15 +84,15 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="Количество деталей" name="amountDetails" value=${amountDetails}>
+                <input class="detailsCount" type="number" placeholder="Количество деталей" required name="amountDetails" value=${amountDetails}>
                 <i class="fa-solid fa-cubes-stacked"></i>
             </div>
             <div class="form-control">
-                <input class="detailPrice" type="text" placeholder="Ставка детали" name="cost" value=${cost}>
+                <input class="detailPrice" type="text" placeholder="Ставка детали" required name="cost" value=${cost}>
                 <i class="fa-solid fa-coins"></i>
             </div>
             <div class="form-control">
-                <input class="penny" type="text" placeholder="Надбавка" name="allowance" value=${allowance}>
+                <input class="penny" type="text" placeholder="Надбавка" required name="allowance" value=${allowance}>
                 <i class="fa-solid fa-money-bill-trend-up"></i>
             </div>
             <div class="form-control">
@@ -171,27 +171,27 @@
             <div class="popup_title">Настройка коэффициентов</div>
              <form class="login-form" action="settings" method="post">
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ для резидента" name="NDFL">
+                <input type="text" placeholder="НДФЛ для резидента" required name="NDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="НДФЛ для не резидента" name="NoNDFL">
+                <input type="text" placeholder="НДФЛ для не резидента" required name="NoNDFL">
                 <i class="fa-solid fa-building-ngo"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ПФ" name="PF">
+                <input type="text" placeholder="ПФ" required name="PF">
                 <i class="fas fa-person-cane"></i>
             </div>
             <div class="form-control">
-                <input type="text" placeholder="ФОМС" name="FOMS">
+                <input type="text" placeholder="ФОМС" required name="FOMS">
                 <i class="fa-solid fa-house-chimney-medical"></i>
             </div>
             <div class="form-control">
-                <input  type="text" placeholder="ФСС" name="FSS">
+                <input  type="text" placeholder="ФСС" required name="FSS">
                 <i class="fas fa-user-plus"></i>
             </div>
             <div class="form-control">
-                <input class="detailsCount" type="text" placeholder="ФСС НС" name="FSSNS">
+                <input class="detailsCount" type="text" placeholder="ФСС НС" required name="FSSNS">
                 <i class="fa-solid fa-lungs-virus"></i>
             </div>
             <div>

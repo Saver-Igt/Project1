@@ -47,6 +47,7 @@ public class SignIn extends HttpServlet {
     	// Закрытие подключения к БД
         try {
             user.getStatement().close();
+            user.getConnection().close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

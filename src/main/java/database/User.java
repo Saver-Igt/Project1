@@ -95,26 +95,6 @@ public class User extends DataBase{
 		}
 		return false;
 	}
-	
-	/**
-	 * Получение роли по логину и паролю.
-	 *
-	 * @param login
-	 * @param password
-	 */
-	public void setRoleFromLoginPassword(String login,String password) {
-		try {
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Project1.dbo.Users");
-			while(resultSet.next()){
-                if(login.equals(resultSet.getString(2)) && password.equals(resultSet.getString(3))) {
-                	setRoleFromString(resultSet.getString(4));
-                }          
-            }
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	/**
 	 * Enum со всеми возможными ролями.
 	 */
